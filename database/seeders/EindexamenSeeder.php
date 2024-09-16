@@ -13,19 +13,6 @@ class EindexamenSeeder extends Seeder
      */
     public function run(): void
     {
-        Eindexamen::create([
-            'examen_naam' => 'Eindexamen Wiskunde',
-            'beschrijving' => 'Een examen over wiskundige onderwerpen.',
-            'duur' => 120,
-            'tijdstip' => '2024-10-01',
-        ]);
-
-        Eindexamen::create([
-            'examen_naam' => 'Eindexamen Nederlands',
-            'beschrijving' => 'Een examen over Nederlandse taal en literatuur.',
-            'duur' => 90,
-            'tijdstip' => '2024-10-02',
-        ]);
-
+       
     }
 }
