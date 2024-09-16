@@ -18,13 +18,14 @@ class FeedbackSeeder extends Seeder
             'zwem_docent_id' => 1,
             'content' => 'Great progress in swimming!',
             'aanmaakdatum' => now()
-        ]);
-
-        Feedback::create([
+        ],
+        [
             'leerling_id' => 2,
             'zwem_docent_id' => 2,
             'content' => 'Needs improvement in backstroke.',
             'aanmaakdatum' => now()
         ]);
+
+        
     }
 }
