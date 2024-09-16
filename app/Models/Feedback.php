@@ -13,11 +13,13 @@ class Feedback extends Model
     protected $table = 'feedback';
 
     protected $fillable = [
-        'leerling_id',
-        'zwem_docent_id',
         'content',
         'aanmaakdatum',
+        'leerling_id',
+        'zwem_docent_id',
     ];
+
+    protected $primaryKey = 'feedback_id';
 
     public function leerling()
     {

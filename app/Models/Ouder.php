@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Ouder extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'voornaam',
+        'achternaam',
+        'user_id',
+    ];
+
+    protected $primaryKey = 'ouder_id';
 }

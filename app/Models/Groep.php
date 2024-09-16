@@ -5,16 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Zwem_Docent extends Model
+class Groep extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'voornaam',
-        'achternaam',
-        'user_id',
+        'groepNaam',
+        'leerling_id',
+        'zwem_docent_id',
+        'zwemles_id',
     ];
 
-    protected $primaryKey = 'zwem_docent_id';
+    protected $primaryKey = 'groep_id';
 }
-    
+

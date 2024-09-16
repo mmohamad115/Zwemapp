@@ -14,6 +14,7 @@ class Leerling extends Model
         'achternaam',
         'geboortedatum',
         'diploma',
+        'ouder_id',
     ];
 
     protected $primaryKey = 'leerling_id';

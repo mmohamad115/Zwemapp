@@ -16,5 +16,8 @@ class Eindexamen extends Model
         'beschrijving',
         'duur',
         'tijdstip',
+        'leerling_id',
     ];
+
+    protected $primaryKey = 'eindexamen_id';
 }

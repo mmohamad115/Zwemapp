@@ -12,11 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('ouders', function (Blueprint $table) {
-            $table->id();
+            $table->id('ouder_id');
             $table->string('voornaam');
             $table->string('achternaam');
-            $table->date('email');
-            $table->string('wachtwoord');
+            $table->foreignId('user_id')->constrained('users');
             $table->timestamps();
         });
     }
