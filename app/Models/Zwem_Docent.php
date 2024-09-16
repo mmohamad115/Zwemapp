@@ -15,3 +15,4 @@ class Zwem_Docent extends Model
         'groep_id',
     ];
 }
+    
