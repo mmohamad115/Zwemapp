@@ -9,6 +9,8 @@ class Groep extends Model
 {
     use HasFactory;
 
+    protected $table = 'groepen';
+
     protected $fillable = [
         'groepNaam',
         'leerling_id',
@@ -17,5 +19,14 @@ class Groep extends Model
     ];
 
     protected $primaryKey = 'groep_id';
-}
 
+    public function leerlingen()
+    {
+        return $this->hasMany(Leerling::class, 'leerling_id');
+    }
+
+    public function zwemles()
+    {
+        return $this->belongsTo(Zwemles::class, 'zwemles_id');
+    }
+}

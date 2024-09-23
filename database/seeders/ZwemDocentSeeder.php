@@ -15,23 +15,16 @@ class ZwemDocentSeeder extends Seeder
     {
         DB::table('zwem_docenten')->insert([
             [
-                'voornaam' => 'Jan',
-                'achternaam' => 'Jansen',
-                'groep_id' => 1,
+                'voornaam' => 'Michael',
+                'achternaam' => 'Johnson',
+                'user_id' => 3, // Verwijzing naar de derde gebruiker (zwemdocent)
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
-                'voornaam' => 'Piet',
-                'achternaam' => 'Pietersen',
-                'groep_id' => 2,
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
-            [
-                'voornaam' => 'Klaas',
-                'achternaam' => 'Klaassen',
-                'groep_id' => 3,
+                'voornaam' => 'Sarah',
+                'achternaam' => 'Williams',
+                'user_id' => 4, // Verwijzing naar de vierde gebruiker (zwemdocent)
                 'created_at' => now(),
                 'updated_at' => now(),
             ],

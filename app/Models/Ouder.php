@@ -16,4 +16,9 @@ class Ouder extends Model
     ];
 
     protected $primaryKey = 'ouder_id';
+    
+    public function leerlingen()
+    {
+        return $this->hasMany(Leerling::class, 'ouder_id');
+    }
 }

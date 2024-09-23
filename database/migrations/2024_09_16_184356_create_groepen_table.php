@@ -19,9 +19,9 @@ return new class extends Migration
             $table->unsignedBigInteger('zwemles_id');
             $table->timestamps();
 
-            $table->foreign('leerling_id')->references('id')->on('leerlingen')->onDelete('cascade');
-            $table->foreign('zwem_docent_id')->references('id')->on('zwem_docenten')->onDelete('cascade');
-            $table->foreign('zwemles_id')->references('id')->on('zwemlessen')->onDelete('cascade');
+            $table->foreign('leerling_id')->references('leerling_id')->on('leerlingen')->onDelete('cascade');
+            $table->foreign('zwem_docent_id')->references('zwem_docent_id')->on('zwem_docenten')->onDelete('cascade');
+            $table->foreign('zwemles_id')->references('zwemles_id')->on('zwemlessen')->onDelete('cascade');
         });
     }
 
