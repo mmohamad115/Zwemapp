@@ -16,5 +16,7 @@ class Zwem_Docent extends Model
     ];
 
     protected $primaryKey = 'zwem_docent_id';
+
+    protected $table = 'zwem_docenten';
 }
     
