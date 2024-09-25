@@ -9,6 +9,9 @@ class Groep extends Model
 {
     use HasFactory;
 
+    protected $table = 'groepen';
+
+
     protected $fillable = [
         'groepNaam',
         'leerling_id',
@@ -18,4 +21,3 @@ class Groep extends Model
 
     protected $primaryKey = 'groep_id';
 }
-

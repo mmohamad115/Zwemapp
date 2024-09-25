@@ -18,9 +18,12 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-
-Route::resource('zwemdocenten', ZwemDocentController::class);
-
-
+Route::get('/zwemlessen', [ZwemDocentController::class, 'index'])->name('zwemlessen.index');
+Route::get('/zwemlessen/create', [ZwemDocentController::class, 'create'])->name('zwemlessen.create');
+Route::post('/zwemlessen', [ZwemDocentController::class, 'store'])->name('zwemlessen.store');
+Route::get('/zwemlessen/{zwemles}', [ZwemDocentController::class, 'show'])->name('zwemlessen.show');
+Route::get('/zwemlessen/{zwemles}/edit', [ZwemDocentController::class, 'edit'])->name('zwemlessen.edit');
+Route::put('/zwemlessen/{zwemles}', [ZwemDocentController::class, 'update'])->name('zwemlessen.update');
+Route::delete('/zwemlessen/{zwemles}', [ZwemDocentController::class, 'destroy'])->name('zwemlessen.destroy');
 
 require __DIR__ . '/auth.php';

@@ -2,74 +2,69 @@
 
 namespace App\Http\Controllers;
 
-
-use App\Models\Zwem_Docent;
+use App\Models\Zwemles;
 use Illuminate\Http\Request;
 
 class ZwemDocentController extends Controller
 {
+
     public function index()
     {
-        $zwemDocenten = Zwem_Docent::all();
-        return view('zwemdocenten.index', compact('zwemDocenten'));
+        $zwemlessen = ZwemLes::all();
+        return view('zwemlessen.index', compact('zwemlessen'));
     }
- 
+
     public function create()
     {
-        return view('zwemdocenten.create');
+        return view('zwemlessen.create');
     }
 
     public function store(Request $request)
     {
         $request->validate([
-            'voornaam' => 'required|string|max:255',
-            'achternaam' => 'required|string|max:255',
-            'email' => 'required|email|unique:zwem_docenten,email',
-            'wachtwoord' => 'required|string|min:6'
+            'naam' => 'required|string|max:255',
+            'beschrijving' => 'required|string',
+            'duurtijd' => 'required|integer',
+            'tijdstip' => 'required|date_format:H:i',
         ]);
 
-        Zwem_Docent::create([
-            'voornaam' => $request->voornaam,
-            'achternaam' => $request->achternaam,
-            'email' => $request->email,
-            'wachtwoord' => bcrypt($request->wachtwoord),
+        $zwemles = ZwemLes::create([
+            'naam' => $request->naam,
+            'beschrijving' => $request->beschrijving,
+            'duurtijd' => $request->duurtijd,
+            'tijdstip' => $request->tijdstip,
         ]);
 
-        return redirect()->route('zwemdocenten.index')->with('success', 'Zwemdocent created successfully!');
+        return redirect()->route('zwemlessen.index')->with('success', 'Zwemles created successfully!');
     }
 
-    public function show(Zwem_Docent $zwemDocent)
+    public function show(Zwemles $zwemles)
     {
-        return view('zwemdocenten.show', compact('zwemDocent'));
+        return view('zwemlessen.show', compact('zwemles'));
     }
 
-    public function edit(Zwem_Docent $zwemDocent)
+    public function edit(Zwemles $zwemles)
     {
-        return view('zwemdocenten.edit', compact('zwemDocent'));
+        return view('zwemlessen.edit', compact('zwemles'));
     }
 
-    public function update(Request $request, Zwem_Docent $zwemDocent)
+    public function update(Request $request, Zwemles $zwemles)
     {
         $request->validate([
-            'voornaam' => 'required|string|max:255',
-            'achternaam' => 'required|string|max:255',
-            'email' => 'required|email|unique:zwem_docenten,email,' . $zwemDocent->id,
-            'wachtwoord' => 'nullable|string|min:6'
+            'naam' => 'required|string|max:255',
+            'beschrijving' => 'required|string',
+            'duurtijd' => 'required|integer',
+            'tijdstip' => 'required|date_format:H:i',
         ]);
 
-        $zwemDocent->update([
-            'voornaam' => $request->voornaam,
-            'achternaam' => $request->achternaam,
-            'email' => $request->email,
-            'wachtwoord' => $request->wachtwoord ? bcrypt($request->wachtwoord) : $zwemDocent->wachtwoord,
-        ]);
+        $zwemles->update($request->validated());
 
-        return redirect()->route('zwemdocenten.index')->with('success', 'Zwemdocent updated successfully!');
+        return redirect()->route('zwemlessen.index')->with('success', 'Zwemles updated successfully!');
     }
 
-    public function destroy(Zwem_Docent $zwemDocent)
+    public function destroy(Zwemles $zwemles)
     {
-        $zwemDocent->delete();
-        return redirect()->route('zwemdocenten.index')->with('success', 'Zwemdocent deleted successfully!');
+        $zwemles->delete();
+        return redirect()->route('zwemlessen.index')->with('success', 'Zwemles deleted successfully!');
     }
 }

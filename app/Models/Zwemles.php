@@ -9,6 +9,8 @@ class Zwemles extends Model
 {
     use HasFactory;
 
+    protected $table = 'zwemlessen';
+
     protected $fillable = [
         'naam',
         'beschrijving',
