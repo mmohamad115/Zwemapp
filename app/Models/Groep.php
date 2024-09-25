@@ -11,13 +11,13 @@ class Groep extends Model
 
     protected $table = 'groepen';
 
-
     protected $fillable = [
-        'groepNaam',
-        'leerling_id',
-        'zwem_docent_id',
+        // Add your fillable fields here
         'zwemles_id',
     ];
 
-    protected $primaryKey = 'groep_id';
+    public function zwemles()
+    {
+        return $this->belongsTo(Zwemles::class, 'zwemles_id', 'zwemles_id');
+    }
 }

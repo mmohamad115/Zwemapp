@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Zwemles;
+use App\Models\ZwemLes;
 use Illuminate\Http\Request;
 
 class ZwemDocentController extends Controller
@@ -28,7 +28,7 @@ class ZwemDocentController extends Controller
             'tijdstip' => 'required|date_format:H:i',
         ]);
 
-        $zwemles = ZwemLes::create([
+        ZwemLes::create([
             'naam' => $request->naam,
             'beschrijving' => $request->beschrijving,
             'duurtijd' => $request->duurtijd,
@@ -38,17 +38,17 @@ class ZwemDocentController extends Controller
         return redirect()->route('zwemlessen.index')->with('success', 'Zwemles created successfully!');
     }
 
-    public function show(Zwemles $zwemles)
+    public function show(ZwemLes $zwemles)
     {
         return view('zwemlessen.show', compact('zwemles'));
     }
 
-    public function edit(Zwemles $zwemles)
+    public function edit(ZwemLes $zwemles)
     {
         return view('zwemlessen.edit', compact('zwemles'));
     }
 
-    public function update(Request $request, Zwemles $zwemles)
+    public function update(Request $request, ZwemLes $zwemles)
     {
         $request->validate([
             'naam' => 'required|string|max:255',
@@ -57,13 +57,19 @@ class ZwemDocentController extends Controller
             'tijdstip' => 'required|date_format:H:i',
         ]);
 
-        $zwemles->update($request->validated());
+        $zwemles->update([
+            'naam' => $request->naam,
+            'beschrijving' => $request->beschrijving,
+            'duurtijd' => $request->duurtijd,
+            'tijdstip' => $request->tijdstip,
+        ]);
 
         return redirect()->route('zwemlessen.index')->with('success', 'Zwemles updated successfully!');
     }
-
-    public function destroy(Zwemles $zwemles)
+    public function destroy(ZwemLes $zwemles)
     {
+        // dd($zwemles);
+        
         $zwemles->delete();
         return redirect()->route('zwemlessen.index')->with('success', 'Zwemles deleted successfully!');
     }

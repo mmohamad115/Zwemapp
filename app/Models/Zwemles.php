@@ -19,4 +19,10 @@ class Zwemles extends Model
     ];
 
     protected $primaryKey = 'zwemles_id';
+
+    // Add this relationship
+    public function groepen()
+    {
+        return $this->hasMany(Groep::class, 'zwemles_id', 'zwemles_id');
+    }
 }

@@ -2,7 +2,7 @@
 
 @section('content')
     <h1>Zwemlessen</h1>
-    <a href="{{ route('zwemlessen.create') }}" class="btn btn-primary">Voeg een nieuwe zwemles toe</a>
+    <a href="{{ route('zwemlessen.create') }}" class="btn btn-primary bg-black">Voeg een nieuwe zwemles toe</a>
 
     @if (session('success'))
         <div class="alert alert-success">{{ session('success') }}</div>
