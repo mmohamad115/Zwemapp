@@ -27,8 +27,10 @@ class Leerling extends Model
         return $this->hasOne(Groep::class, 'leerling_id', 'leerling_id');
     }
 
+
     public function feedback()
     {
         return $this->hasMany(Feedback::class, 'leerling_id', 'leerling_id');
     }
+
 }

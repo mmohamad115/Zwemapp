@@ -20,7 +20,7 @@ return new class extends Migration
             $table->unsignedBigInteger('leerling_id')->nullable();
             $table->timestamps();
 
-            $table->foreign('leerling_id')->references('id')->on('leerlingen')->onDelete('cascade');
+            $table->foreign('leerling_id')->references('leerling_id')->on('leerlingen')->onDelete('cascade');
         });
     }
 

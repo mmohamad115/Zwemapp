@@ -16,11 +16,11 @@ return new class extends Migration
             $table->string('voornaam');
             $table->string('achternaam');
             $table->date('geboortedatum');
-            $table->string('diploma');
+            $table->string('diploma')->nullable();
             $table->unsignedBigInteger('ouder_id');
             $table->timestamps();
 
-            $table->foreign('ouder_id')->references('id')->on('ouders')->onDelete('cascade');
+            $table->foreign('ouder_id')->references('ouder_id')->on('ouders')->onDelete('cascade');
         });
     }
 

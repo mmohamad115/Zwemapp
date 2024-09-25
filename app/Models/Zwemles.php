@@ -9,6 +9,8 @@ class Zwemles extends Model
 {
     use HasFactory;
 
+    protected $table = 'zwemlessen';
+
     protected $fillable = [
         'naam',
         'beschrijving',
@@ -17,4 +19,9 @@ class Zwemles extends Model
     ];
 
     protected $primaryKey = 'zwemles_id';
+
+    public function groepen()
+    {
+        return $this->hasMany(Groep::class, 'zwemles_id');
+    }
 }
