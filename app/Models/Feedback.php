@@ -23,12 +23,11 @@ class Feedback extends Model
 
     public function leerling()
     {
-        // return $this->belongsTo(Leerling::class);
+        return $this->belongsTo(Leerling::class, 'leerling_id');
     }
-
 
     public function zwemDocent()
     {
-        // return $this->belongsTo(ZwemDocent::class);
+        return $this->belongsTo(Zwem_Docent::class, 'zwem_docent_id');
     }
 }
