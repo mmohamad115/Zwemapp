@@ -67,9 +67,7 @@ class ZwemDocentController extends Controller
         return redirect()->route('zwemlessen.index')->with('success', 'Zwemles updated successfully!');
     }
     public function destroy(ZwemLes $zwemles)
-    {
-        // dd($zwemles);
-        
+    {      
         $zwemles->delete();
         return redirect()->route('zwemlessen.index')->with('success', 'Zwemles deleted successfully!');
     }

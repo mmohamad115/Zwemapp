@@ -12,7 +12,6 @@ class Groep extends Model
     protected $table = 'groepen';
 
     protected $fillable = [
-        // Add your fillable fields here
         'zwemles_id',
     ];
 

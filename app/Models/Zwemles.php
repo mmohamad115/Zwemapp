@@ -18,11 +18,8 @@ class Zwemles extends Model
         'tijdstip',
     ];
 
-    protected $primaryKey = 'zwemles_id';
-
-    // Add this relationship
     public function groepen()
     {
-        return $this->hasMany(Groep::class, 'zwemles_id', 'zwemles_id');
+        return $this->hasMany(Groep::class);
     }
 }
