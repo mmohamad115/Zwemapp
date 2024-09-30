@@ -24,7 +24,7 @@
                     <td>{{ $zwemles->naam }}</td>
                     <td>{{ $zwemles->beschrijving }}</td>
                     <td>{{ $zwemles->duurtijd }} minuten</td>
-                    <td>{{ \Carbon\Carbon::parse($zwemles->tijdstip)->format('Y-m-d H:i') }}</td>
+                    <td>{{ $zwemles->tijdstip }}</td>
                     <td>
                         <a href="{{ route('zwemlessen.show', $zwemles) }}" class="btn btn-info">Bekijk</a>
                         <a href="{{ route('zwemlessen.edit', $zwemles) }}" class="btn btn-warning">Bewerk</a>
