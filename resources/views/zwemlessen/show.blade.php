@@ -6,7 +6,7 @@
     <p><strong>Naam:</strong> {{ $zwemles->naam }}</p>
     <p><strong>Beschrijving:</strong> {{ $zwemles->beschrijving }}</p>
     <p><strong>Duurtijd:</strong> {{ $zwemles->duurtijd }} minuten</p>
-    <p><strong>Tijdstip:</strong> {{ $zwemles->tijdstip }}</p>
+    <p><strong>Tijdstip:</strong> {{ $zwemles->tijdstip ? date('Y-m-d H:i', strtotime($zwemles->tijdstip)) : '' }}</p>
 
     <a href="{{ route('zwemlessen.index') }}" class="btn btn-secondary">Terug</a>
     <a href="{{ route('zwemlessen.edit', $zwemles) }}" class="btn btn-warning">Bewerk</a>

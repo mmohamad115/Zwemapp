@@ -23,7 +23,7 @@
 
         <div class="form-group">
             <label for="tijdstip">Tijdstip</label>
-            <input type="time" name="tijdstip" class="form-control" value="{{ old('tijdstip', \Carbon\Carbon::parse($zwemles->tijdstip)->format('H:i')) }}" required>
+            <input type="datetime-local" name="tijdstip" class="form-control" value="{{ old('tijdstip', $zwemles->tijdstip ? date('Y-m-d\TH:i', strtotime($zwemles->tijdstip)) : '') }}" required>
         </div>
 
         <button type="submit" class="btn btn-primary">Update Zwemles</button>

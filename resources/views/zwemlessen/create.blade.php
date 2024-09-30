@@ -22,9 +22,9 @@
 
         <div class="form-group">
             <label for="tijdstip">Tijdstip</label>
-            <input type="time" name="tijdstip" class="form-control" required>
+            <input type="datetime-local" name="tijdstip" class="form-control" required>
         </div>
-
+        
         <button type="submit" class="btn btn-primary">Create Zwemles</button>
     </form>
 @endsection
