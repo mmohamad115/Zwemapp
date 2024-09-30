@@ -130,13 +130,22 @@
                 </ul>
             </nav>
         </aside>
-{{-- 
+
         <!-- Contenido principal -->
         <main class="flex-1 p-6">
             <!-- Aquí puedes agregar el contenido principal de tu página -->
-            <h1 class="text-2xl font-bold mb-4">¡Bienvenido al CRM de Mi Empresa!</h1>
-            <p>En esta sección encontrarás todo lo que necesitas para administrar tus clientes y ventas de manera eficiente.</p>
-        </main> --}}
+            {{-- <h1 class="text-2xl font-bold mb-4">¡Bienvenido al CRM de Mi Empresa!</h1>
+            <p>En esta sección encontrarás todo lo que necesitas para administrar tus clientes y ventas de manera
+                eficiente.</p> --}}
+            @foreach ($leerlingen as $leerling)
+                <h2>{{ $leerling->voornaam }} {{ $leerling->achternaam }}</h2>
+                <p>Groep: {{ $leerling->groep->groepNaam }}</p>
+                <h3>Feedback van de docent:</h3>
+                @foreach ($leerling->feedback as $fb)
+                    <p>{{ $fb->content }} (door {{ $fb->zwemDocent->voornaam }} {{ $fb->zwemDocent->achternaam }})</p>
+                @endforeach
+            @endforeach
+        </main>
     </div>
 
     <script>

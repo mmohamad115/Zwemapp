@@ -13,10 +13,8 @@ class OudersController extends Controller
      */
     public function index()
     {
-        // Haal de huidige ingelogde ouder op
         $ouder = Ouder::where('user_id', auth()->id())->first();
 
-        // Haal alle leerlingen op die bij deze ouder horen, inclusief hun groep
         $leerlingen = Leerling::with(['groep', 'feedback.zwemDocent'])->where('ouder_id', $ouder->ouder_id)->get();
 
         // dd($leerlingen); 
