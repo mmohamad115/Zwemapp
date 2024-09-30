@@ -42,7 +42,7 @@
     </div>
  
     <div class="flex">
-        <aside class="bg-blue-500 text-white w-64 h-screen p-4 overflow-y-auto">
+        <aside class="bg-blue-500 text-white w-64 h-screen p-4 overflow-y-auto relative">
             <nav>
                 <ul class="space-y-2">
                     <li class="opcion-con-desplegable">
@@ -123,6 +123,15 @@
                     </li>
                 </ul>
             </nav>
+
+            <!-- Logout button positioned at the bottom left corner -->
+            <form method="POST" action="{{ route('logout') }}" class="absolute bottom-4 left-4">
+                @csrf
+                <button type="submit" class="bg-red-600 text-white hover:bg-red-700 flex items-center px-4 py-2 rounded-lg">
+                    <i class="fas fa-sign-out-alt mr-2 text-xs"></i>
+                    Logout
+                </button>
+            </form>
         </aside>
  
         <div class="w-full">
