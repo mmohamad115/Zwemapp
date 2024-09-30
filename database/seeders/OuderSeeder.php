@@ -2,44 +2,40 @@
 
 namespace Database\Seeders;
 
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class LeerlingenSeeder extends Seeder
+class OuderSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        DB::table('leerlingen')->insert([
+        DB::table('ouders')->insert([
             [
                 'voornaam' => 'Jan',
                 'achternaam' => 'Jansen',
-                'geboortedatum' => '2005-06-15',
-                'diploma' => 'VMBO',
-                'ouder_id' => 1,
+                'user_id' => 1, // Verwijzing naar de eerste gebruiker (ouder)
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
                 'voornaam' => 'Pieter',
                 'achternaam' => 'Pietersen',
-                'geboortedatum' => '2006-04-12',
-                'diploma' => 'HAVO',
-                'ouder_id' => 2,
+                'user_id' => 2, // Verwijzing naar de tweede gebruiker (ouder)
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
-                'voornaam' => 'Anna',
-                'achternaam' => 'De Vries',
-                'geboortedatum' => '2007-09-22',
-                'diploma' => 'VWO',
-                'ouder_id' => 3,
+                'voornaam' => 'Mohamad',
+                'achternaam' => 'Mohamad',
+                'user_id' => 3, // Verwijzing naar de tweede gebruiker (ouder)
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
         ]);
+
     }
 }

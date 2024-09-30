@@ -11,16 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('feedback', function (Blueprint $table) {
-            $table->id('feedback_id');
-            $table->text('content');
-            $table->date('aanmaakdatum');
-            $table->unsignedBigInteger('zwem_docent_id')->nullable();
+        Schema::create('eindexamen', function (Blueprint $table) {
+            $table->id('eindexamen_id');
+            $table->string('examen_naam');
+            $table->string('beschrijving');
+            $table->integer('duur');
+            $table->date('tijdstip');
             $table->unsignedBigInteger('leerling_id')->nullable();
             $table->timestamps();
 
             $table->foreign('leerling_id')->references('leerling_id')->on('leerlingen')->onDelete('cascade');
-            $table->foreign('zwem_docent_id')->references('zwem_docent_id')->on('zwem_docenten')->onDelete('cascade');
         });
     }
 
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('feedback');
+        Schema::dropIfExists('eindexamen');
     }
 };

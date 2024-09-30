@@ -11,12 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('zwemlessen', function (Blueprint $table) {
-            $table->id('zwemles_id');
-            $table->string('naam');
-            $table->string('beschrijving');
-            $table->string('duurtijd');
-            $table->dateTime('tijdstip');
+        Schema::create('zwem_docenten', function (Blueprint $table) {
+            $table->id('zwem_docent_id');
+            $table->string('voornaam');
+            $table->string('achternaam');
+            $table->foreignId('user_id')->constrained('users');
             $table->timestamps();
         });
     }
@@ -26,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('zwemlessen');
+        Schema::dropIfExists('zwem_docenten');
     }
 };

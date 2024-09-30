@@ -11,16 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('feedback', function (Blueprint $table) {
-            $table->id('feedback_id');
-            $table->text('content');
-            $table->date('aanmaakdatum');
-            $table->unsignedBigInteger('zwem_docent_id')->nullable();
-            $table->unsignedBigInteger('leerling_id')->nullable();
+        Schema::create('groepen', function (Blueprint $table) {
+            $table->id('groep_id');
+            $table->string('groepNaam');
+            $table->unsignedBigInteger('leerling_id');
+            $table->unsignedBigInteger('zwem_docent_id');
+            $table->unsignedBigInteger('zwemles_id');
             $table->timestamps();
 
             $table->foreign('leerling_id')->references('leerling_id')->on('leerlingen')->onDelete('cascade');
             $table->foreign('zwem_docent_id')->references('zwem_docent_id')->on('zwem_docenten')->onDelete('cascade');
+            $table->foreign('zwemles_id')->references('zwemles_id')->on('zwemlessen')->onDelete('cascade');
         });
     }
 
@@ -29,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('feedback');
+        Schema::dropIfExists('groepen');
     }
 };

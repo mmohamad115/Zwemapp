@@ -13,20 +13,21 @@ class Feedback extends Model
     protected $table = 'feedback';
 
     protected $fillable = [
-        'leerling_id',
-        'zwem_docent_id',
         'content',
         'aanmaakdatum',
+        'leerling_id',
+        'zwem_docent_id',
     ];
+
+    protected $primaryKey = 'feedback_id';
 
     public function leerling()
     {
-        // return $this->belongsTo(Leerling::class);
+        return $this->belongsTo(Leerling::class, 'leerling_id');
     }
-
 
     public function zwemDocent()
     {
-        // return $this->belongsTo(ZwemDocent::class);
+        return $this->belongsTo(Zwem_Docent::class, 'zwem_docent_id');
     }
 }
