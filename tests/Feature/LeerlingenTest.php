@@ -1,5 +1,6 @@
 <?php
 
+
 // test('example', function () {
 //     $response = $this->get('/');
 
@@ -16,4 +17,5 @@ test('leerlingen overview screen can only be rendered by logged in zwemdocent', 
     $response = $this->get('/leerlingen');
     $response->assertStatus(200);
 });
+
 

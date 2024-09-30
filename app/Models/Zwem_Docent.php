@@ -9,8 +9,6 @@ class Zwem_Docent extends Model
 {
     use HasFactory;
 
-    protected $table = 'zwem_docenten';
-
     protected $fillable = [
         'voornaam',
         'achternaam',
