@@ -11,6 +11,8 @@ class Zwemles extends Model
 
     protected $table = 'zwemlessen';
 
+    protected $primaryKey = 'zwemles_id';
+
     protected $fillable = [
         'naam',
         'beschrijving',
@@ -18,7 +20,11 @@ class Zwemles extends Model
         'tijdstip',
     ];
 
-    protected $primaryKey = 'zwemles_id';
+
+    public function groepen()
+    {
+        return $this->hasMany(Groep::class);
+    }
 
     public function groepen()
     {
