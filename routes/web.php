@@ -24,9 +24,13 @@ Route::middleware('auth')->group(function () {
     Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
 });
 
+
+Route::middleware(['auth', 'role:ouder'])->group(function () {});
+
 Route::middleware(['auth', 'role:ouder'])->group(function () {
     // Add any additional routes for 'ouder' role here
 });
+
 
 Route::get('/zwemlessen', [ZwemDocentController::class, 'index'])->name('zwemlessen.index');
 Route::get('/zwemlessen/create', [ZwemDocentController::class, 'create'])->name('zwemlessen.create');
