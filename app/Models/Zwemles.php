@@ -10,6 +10,8 @@ class Zwemles extends Model
     use HasFactory;
 
     protected $table = 'zwemlessen';
+    protected $primaryKey = 'zwemles_id';
+
 
     protected $fillable = [
         'naam',

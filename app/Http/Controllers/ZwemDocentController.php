@@ -11,6 +11,7 @@ class ZwemDocentController extends Controller
     public function index()
     {
         $zwemlessen = ZwemLes::all();
+
         return view('zwemlessen.index', compact('zwemlessen'));
     }
 

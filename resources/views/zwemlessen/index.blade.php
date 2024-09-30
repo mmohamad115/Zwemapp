@@ -26,7 +26,7 @@
                     <td>{{ $zwemles->duurtijd }} minuten</td>
                     <td>{{ $zwemles->tijdstip }}</td>
                     <td>
-                        <a href="{{ route('zwemlessen.show', $zwemles) }}" class="btn btn-info">Bekijk</a>
+                            <a href="{{ route('zwemlessen.show', $zwemles) }}" class="btn btn-info">Bekijk</a>
                         <a href="{{ route('zwemlessen.edit', $zwemles) }}" class="btn btn-warning">Bewerk</a>
                         <form action="{{ route('zwemlessen.destroy', $zwemles) }}" method="POST"
                             style="display: inline-block;">
