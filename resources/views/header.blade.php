@@ -16,12 +16,12 @@
             <div class="hidden xl:flex items-center space-x-5 items-center">
                 <!-- Sign In / Register      -->
                 <div class="hidden xl:flex items-center space-x-5 items-center">
-                    @guest
+         
                         <!-- Show when user is not logged in -->
                         <ul class="hidden md:flex px-4 mx-auto font-semibold font-heading space-x-12">
                             <li><a class="hover:text-cyan-400" href="{{ route('login') }}">Login</a></li>
                         </ul>
-                    @endguest
+
 
                     {{-- @auth
                         <!-- Show when user is logged in -->
