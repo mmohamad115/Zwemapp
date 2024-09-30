@@ -13,47 +13,48 @@
 
 <body class="bg-gray-100">
     <!-- Navegación Superior -->
-    <nav class="bg-blue-500 p-4 flex items-center justify-between">
-        <div>
-            <h1 class="text-white text-xl font-semibold">Welkom</h1>
-        </div>
-        <div class="flex items-center space-x-4">
-            <span class="text-white">{{ auth()->user()->name }}</span>
-            <i class="fas fa-user-circle text-white text-2xl"></i>
-        </div>
-    </nav>
+    <div class="">
+        <nav class="flex bg-white text-gray-950 ml-16 absolute w-11/12 rounded-b-xl z-50">
+            <div class="px-5 xl:px-12  flex w-full items-center">
+                <a class="text-3xl font-bold font-heading">
+                    <img class="h-20 w-20" src="photos/SSClogoText.png" alt="logo">
+                    {{-- SplashZone Swim Center --}}
+                </a>
+                <ul class="px-4 mx-auto font-semibold font-heading space-x-12">
+                    <li><a class="hover:text-cyan-400">Dashboard</a></li>
+                </ul>
+                <div class="items-center space-x-5 items-center">
+                    <div class="items-center space-x-5 items-center">
+                        <div class="flex items-center space-x-4">
+                            <span class="text-gray-900">{{ auth()->user()->name }}</span>
+                            <i class="fas fa-user-circle text-gray-900 text-2xl"></i>
+                        </div>
+                    </div>
 
-    <!-- Contenedor principal flex -->
+
+                </div>
+            </div>
+        </nav>
+        <div class="bg-white pr-4 pt-2 flex items-center justify-between h-20">
+            <div class="flex items-center space-x-4">
+            </div>
+        </div>
+    </div>
+
     <div class="flex">
-        <!-- Navegación lateral -->
-        <aside class="bg-gray-800 text-white w-64 h-screen p-4 overflow-y-auto">
+        <aside class="bg-blue-500 text-white w-64 h-screen p-4 overflow-y-auto">
             <nav>
                 <ul class="space-y-2">
                     <li class="opcion-con-desplegable">
-                        <div class="flex items-center justify-between p-2 hover:bg-gray-700 cursor-pointer">
+                        <div class="flex items-center justify-between p-2 hover:bg-blue-400 cursor-pointer rounded-lg">
                             <div class="flex items-center">
                                 <i class="fas fa-calendar-alt mr-2"></i>
                                 <span>Agenda</span>
                             </div>
-                            {{-- <i class="fas fa-chevron-down text-xs"></i> --}}
                         </div>
-                        {{-- <ul class="desplegable ml-4 hidden">
-                            <li>
-                                <a href="#" class="block p-2 hover:bg-gray-700 flex items-center">
-                                    <i class="fas fa-chevron-right mr-2 text-xs"></i>
-                                    Gestion de citas
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="block p-2 hover:bg-gray-700 flex items-center">
-                                    <i class="fas fa-chevron-right mr-2 text-xs"></i>
-                                    Polizas
-                                </a>
-                            </li>
-                        </ul>
-                    </li> --}}
+                    </li>
                     <li class="opcion-con-desplegable">
-                        <div class="flex items-center justify-between p-2 hover:bg-gray-700 cursor-pointer">
+                        <div class="flex items-center justify-between p-2 hover:bg-blue-400 cursor-pointer rounded-lg">
                             <div class="flex items-center">
                                 <i class="fas fa-money-bill-wave mr-2"></i>
                                 <span>Contabilidad</span>
@@ -62,27 +63,24 @@
                         </div>
                         <ul class="desplegable ml-4 hidden">
                             <li>
-                                <a href="#" class="block p-2 hover:bg-gray-700 flex items-center">
-                                    <i class="fas fa-chevron-right mr-2 text-xs"></i>
+                                <a href="#" class="block p-2 hover:bg-blue-400 flex items-center rounded-lg">
                                     Tratamientos
                                 </a>
                             </li>
                             <li>
-                                <a href="#" class="block p-2 hover:bg-gray-700 flex items-center">
-                                    <i class="fas fa-chevron-right mr-2 text-xs"></i>
+                                <a href="#" class="block p-2 hover:bg-blue-400 flex items-center rounded-lg">
                                     Gastos
                                 </a>
                             </li>
                             <li>
-                                <a href="#" class="block p-2 hover:bg-gray-700 flex items-center">
-                                    <i class="fas fa-chevron-right mr-2 text-xs"></i>
+                                <a href="#" class="block p-2 hover:bg-blue-400 flex items-center rounded-lg">
                                     Facturas
                                 </a>
                             </li>
                         </ul>
                     </li>
                     <li class="opcion-con-desplegable">
-                        <div class="flex items-center justify-between p-2 hover:bg-gray-700 cursor-pointer">
+                        <div class="flex items-center justify-between p-2 hover:bg-blue-400 cursor-pointer rounded-lg">
                             <div class="flex items-center">
                                 <i class="fas fa-chart-bar mr-2"></i>
                                 <span>Informes</span>
@@ -91,21 +89,19 @@
                         </div>
                         <ul class="desplegable ml-4 hidden">
                             <li>
-                                <a href="#" class="block p-2 hover:bg-gray-700 flex items-center">
-                                    <i class="fas fa-chevron-right mr-2 text-xs"></i>
+                                <a href="#" class="block p-2 hover:bg-blue-400 flex items-center rounded-lg">
                                     Presupuestos
                                 </a>
                             </li>
                             <li>
-                                <a href="#" class="block p-2 hover:bg-gray-700 flex items-center">
-                                    <i class="fas fa-chevron-right mr-2 text-xs"></i>
+                                <a href="#" class="block p-2 hover:bg-blue-400 flex items-center rounded-lg">
                                     Informe médico
                                 </a>
                             </li>
                         </ul>
                     </li>
                     <li class="opcion-con-desplegable">
-                        <div class="flex items-center justify-between p-2 hover:bg-gray-700 cursor-pointer">
+                        <div class="flex items-center justify-between p-2 hover:bg-blue-400 cursor-pointer rounded-lg">
                             <div class="flex items-center">
                                 <i class="fas fa-file-alt mr-2"></i>
                                 <span>Documentación</span>
@@ -114,14 +110,12 @@
                         </div>
                         <ul class="desplegable ml-4 hidden">
                             <li>
-                                <a href="#" class="block p-2 hover:bg-gray-700 flex items-center">
-                                    <i class="fas fa-chevron-right mr-2 text-xs"></i>
+                                <a href="#" class="block p-2 hover:bg-blue-400 flex items-center rounded-lg">
                                     Firmas pendientes
                                 </a>
                             </li>
                             <li>
-                                <a href="#" class="block p-2 hover:bg-gray-700 flex items-center">
-                                    <i class="fas fa-chevron-right mr-2 text-xs"></i>
+                                <a href="#" class="block p-2 hover:bg-blue-400 flex items-center rounded-lg">
                                     Documentos
                                 </a>
                             </li>
@@ -131,35 +125,70 @@
             </nav>
         </aside>
 
-        <!-- Contenido principal -->
-        <main class="flex-1 p-6">
-            <!-- Aquí puedes agregar el contenido principal de tu página -->
-            {{-- <h1 class="text-2xl font-bold mb-4">¡Bienvenido al CRM de Mi Empresa!</h1>
-            <p>En esta sección encontrarás todo lo que necesitas para administrar tus clientes y ventas de manera
-                eficiente.</p> --}}
-            @foreach ($leerlingen as $leerling)
-                <h2>{{ $leerling->voornaam }} {{ $leerling->achternaam }}</h2>
-                <p>Groep: {{ $leerling->groep->groepNaam }}</p>
-                <h3>Feedback van de docent:</h3>
-                @foreach ($leerling->feedback as $fb)
-                    <p>{{ $fb->content }} (door {{ $fb->zwemDocent->voornaam }} {{ $fb->zwemDocent->achternaam }})</p>
+        <div class="w-full">
+            <div class="flex">
+                <div class="bg-blue-500 w-2/6 m-5 rounded-xl">
+                    <p class="text-center p-5 text-white  text-xl">Abonnement</p>
+                </div>
+                <div class="bg-blue-500 w-2/6 m-5 rounded-xl">
+                    <p class="text-center p-5 text-white  text-xl">Kinderen</p>
+                </div>
+                <div class="bg-blue-500 w-2/6 m-5 rounded-xl">
+                    <p class="text-center p-5 text-white  text-xl">Feedback</p>
+                </div>
+            </div>
+            <div class="flex">
+                <div class="bg-white w-2/6 m-5 p-5 h-24 rounded-3xl">
+                    <p>test</p>
+                </div>
+                @foreach ($leerlingen as $leerling)
+                    <div class="bg-white w-2/6 m-5 p-5 h-24 rounded-3xl">
+                        <div class="">
+                            <h3 class="text-xl font-semibold">{{ $leerling->voornaam }} {{ $leerling->achternaam }}
+                            </h3>
+                            <p class="text-gray-600 ">{{ $leerling->groep->groepNaam }}</p>
+                        </div>
+                    </div>
                 @endforeach
-            @endforeach
-        </main>
+                @foreach ($leerling->feedback as $fb)
+                    <div class="bg-white w-2/6 m-5 rounded-3xl p-5">
+                        <div
+                            class="relative flex items-center gap-4 pt-0 pb-8 mx-0 mt-4 overflow-hidden text-gray-700 bg-transparent shadow-none rounded-xl bg-clip-border">
+                            <div class="flex w-full flex-col gap-0.5">
+                                <div class="flex items-center justify-between">
+                                    <h5
+                                        class="block font-sans text-xl antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+                                        {{ $fb->zwemDocent->voornaam }} {{ $fb->zwemDocent->achternaam }}
+                                    </h5>
+                                    <div class="flex items-center gap-0.5">
+                                        © {{ $fb->aanmaakdatum }}
+                                    </div>
+                                </div>
+                                <p
+                                    class="block font-sans text-base antialiased font-light leading-relaxed text-blue-gray-900">
+                                    Heeft feedback achtergelaten
+                                </p>
+                            </div>
+                        </div>
+                        <div class="p-0 mb-6">
+                            <p class="block font-sans text-base antialiased font-light leading-relaxed text-inherit">
+                                {{ $fb->content }}
+                            </p>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
     </div>
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            // Obtener todas las opciones principales con desplegables
             const opcionesConDesplegable = document.querySelectorAll(".opcion-con-desplegable");
 
-            // Agregar evento de clic a cada opción principal
             opcionesConDesplegable.forEach(function(opcion) {
                 opcion.addEventListener("click", function() {
-                    // Obtener el desplegable asociado a la opción
                     const desplegable = opcion.querySelector(".desplegable");
 
-                    // Alternar la clase "hidden" para mostrar u ocultar el desplegable
                     desplegable.classList.toggle("hidden");
                 });
             });
