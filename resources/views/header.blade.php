@@ -13,6 +13,7 @@
             </ul>
             <div class="hidden xl:flex items-center space-x-5 items-center">
                 <div class="hidden xl:flex items-center space-x-5 items-center">
+
                     {{-- @guest --}}
                         <ul class="hidden md:flex px-4 mx-auto font-semibold font-heading space-x-12">
                             <li><a class="hover:text-cyan-400" href="{{ route('login') }}">Login</a></li>
@@ -20,6 +21,17 @@
                     {{-- @endguest --}}
 
                     {{-- @auth
+
+         
+                        <!-- Show when user is not logged in -->
+                        <ul class="hidden md:flex px-4 mx-auto font-semibold font-heading space-x-12">
+                            <li><a class="hover:text-cyan-400" href="{{ route('login') }}">Login</a></li>
+                        </ul>
+
+
+                    {{-- @auth
+                        <!-- Show when user is logged in -->
+
                         <a class="flex items-center hover:text-cyan-400" href="#">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hover:text-cyan-400" fill="none"
                                 viewBox="0 0 24 24" stroke="currentColor">

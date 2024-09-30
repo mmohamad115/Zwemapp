@@ -12,12 +12,12 @@ class ZwemDocentController extends Controller
     {
         $zwemlessen = ZwemLes::all();
 
-        return view('zwemlessen.index', compact('zwemlessen'));
+        return view('zwemdocenten.index', compact('zwemlessen'));
     }
 
     public function create()
     {
-        return view('zwemlessen.create');
+        return view('zwemdocenten.create');
     }
 
     public function store(Request $request)
@@ -41,12 +41,12 @@ class ZwemDocentController extends Controller
 
     public function show(ZwemLes $zwemles)
     {
-        return view('zwemlessen.show', compact('zwemles'));
+        return view('zwemdocenten.show', compact('zwemles'));
     }
 
     public function edit(ZwemLes $zwemles)
     {
-        return view('zwemlessen.edit', compact('zwemles'));
+        return view('zwemdocenten.edit', compact('zwemles'));
     }
 
     public function update(Request $request, ZwemLes $zwemles)

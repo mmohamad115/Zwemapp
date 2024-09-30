@@ -28,16 +28,19 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
+        // Set the intended URL to the home page
+        $request->session()->put('url.intended', url('/'));
+
         $user = Auth::user();
 
         if ($user->role === 'ouder') {
             return redirect()->route('ouders.index');
         }
         if ($user->role === 'zwem_docent') {
-            return redirect()->route('zwem_docenten.index');
+            return redirect()->route('zwemlessen.index');
         }
 
-        return redirect()->intended(route('dashboard', absolute: false));
+        return redirect()->intended(route('dashboard'));
     }
 
     /**
