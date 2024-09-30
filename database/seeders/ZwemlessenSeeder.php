@@ -16,7 +16,7 @@ class ZwemlessenSeeder extends Seeder
             [
                 'naam' => 'Beginners Zwemles',
                 'beschrijving' => 'Een zwemles voor beginners waar basis zwemtechnieken worden aangeleerd.',
-                'duurtijd' => '1 uur',
+                'duurtijd' => '60',
                 'tijdstip' => '2024-09-20 10:00:00',
                 'created_at' => now(),
                 'updated_at' => now(),
@@ -24,7 +24,7 @@ class ZwemlessenSeeder extends Seeder
             [
                 'naam' => 'Gevorderden Zwemles',
                 'beschrijving' => 'Voor de meer ervaren zwemmers om hun technieken te verbeteren.',
-                'duurtijd' => '1.5 uur',
+                'duurtijd' => '70',
                 'tijdstip' => '2024-09-21 14:00:00',
                 'created_at' => now(),
                 'updated_at' => now(),
@@ -32,7 +32,7 @@ class ZwemlessenSeeder extends Seeder
             [
                 'naam' => 'Zwemles voor kinderen',
                 'beschrijving' => 'Een zwemles speciaal gericht op kinderen van 5 tot 10 jaar.',
-                'duurtijd' => '45 minuten',
+                'duurtijd' => '90',
                 'tijdstip' => '2024-09-22 09:00:00',
                 'created_at' => now(),
                 'updated_at' => now(),

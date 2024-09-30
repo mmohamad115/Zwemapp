@@ -28,6 +28,9 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
+        // Set the intended URL to the home page
+        $request->session()->put('url.intended', url('/'));
+
         $user = Auth::user();
 
         if ($user->role === 'ouder') {
