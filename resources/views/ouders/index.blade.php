@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
-
+ 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,7 +10,7 @@
     <!-- Agregar el enlace al archivo de la biblioteca FontAwesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
 </head>
-
+ 
 <body class="bg-gray-100">
     <!-- Navegación Superior -->
     <div class="">
@@ -30,8 +30,8 @@
                             <i class="fas fa-user-circle text-gray-900 text-2xl"></i>
                         </div>
                     </div>
-
-
+ 
+ 
                 </div>
             </div>
         </nav>
@@ -40,14 +40,9 @@
             </div>
         </div>
     </div>
-
+ 
     <div class="flex">
-
         <aside class="bg-blue-500 text-white w-64 h-screen p-4 overflow-y-auto">
-
-        <!-- Navegación lateral -->
-        <aside class="bg-gray-800 text-white w-64 h-screen p-4 overflow-y-auto relative">
-
             <nav>
                 <ul class="space-y-2">
                     <li class="opcion-con-desplegable">
@@ -128,17 +123,8 @@
                     </li>
                 </ul>
             </nav>
-
-            <!-- Logout button positioned at the bottom left corner -->
-            <form method="POST" action="{{ route('logout') }}" class="absolute bottom-4 left-4">
-                @csrf
-                <button type="submit" class="text-red-500 hover:text-red-700 flex items-center">
-                    <i class="fas fa-sign-out-alt mr-2 text-xs"></i>
-                    Logout
-                </button>
-            </form>
         </aside>
-
+ 
         <div class="w-full">
             <div class="flex">
                 <div class="bg-blue-500 w-2/6 m-5 rounded-xl">
@@ -194,20 +180,20 @@
             </div>
         </div>
     </div>
-
+ 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             const opcionesConDesplegable = document.querySelectorAll(".opcion-con-desplegable");
-
+ 
             opcionesConDesplegable.forEach(function(opcion) {
                 opcion.addEventListener("click", function() {
                     const desplegable = opcion.querySelector(".desplegable");
-
+ 
                     desplegable.classList.toggle("hidden");
                 });
             });
         });
     </script>
 </body>
-
+ 
 </html>
