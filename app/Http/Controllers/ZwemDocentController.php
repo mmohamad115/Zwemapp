@@ -12,12 +12,12 @@ class ZwemDocentController extends Controller
     {
         $zwemlessen = ZwemLes::all();
 
-        return view('zwemlessen.index', compact('zwemlessen'));
+        return view('zwemdocenten.index', compact('zwemlessen'));
     }
 
     public function create()
     {
-        return view('zwemlessen.create');
+        return view('zwemdocenten.create');
     }
 
     public function store(Request $request)
@@ -36,17 +36,17 @@ class ZwemDocentController extends Controller
             'tijdstip' => $request->tijdstip,
         ]);
 
-        return redirect()->route('zwemlessen.index')->with('success', 'Zwemles created successfully!');
+        return redirect()->route('zwemdoce.index')->with('success', 'Zwemles created successfully!');
     }
 
     public function show(ZwemLes $zwemles)
     {
-        return view('zwemlessen.show', compact('zwemles'));
+        return view('zwemdoce.show', compact('zwemles'));
     }
 
     public function edit(ZwemLes $zwemles)
     {
-        return view('zwemlessen.edit', compact('zwemles'));
+        return view('zwemdoce.edit', compact('zwemles'));
     }
 
     public function update(Request $request, ZwemLes $zwemles)
@@ -65,11 +65,11 @@ class ZwemDocentController extends Controller
             'tijdstip' => $request->tijdstip,
         ]);
 
-        return redirect()->route('zwemlessen.index')->with('success', 'Zwemles updated successfully!');
+        return redirect()->route('zwemdoce.index')->with('success', 'Zwemles updated successfully!');
     }
     public function destroy(ZwemLes $zwemles)
     {      
         $zwemles->delete();
-        return redirect()->route('zwemlessen.index')->with('success', 'Zwemles deleted successfully!');
+        return redirect()->route('zwemdoce.index')->with('success', 'Zwemles deleted successfully!');
     }
 }

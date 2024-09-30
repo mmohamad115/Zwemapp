@@ -34,7 +34,7 @@ class AuthenticatedSessionController extends Controller
             return redirect()->route('ouders.index');
         }
         if ($user->role === 'zwem_docent') {
-            return redirect()->route('zwem_docenten.index');
+            return redirect()->route('zwemlessen.index');
         }
 
         return redirect()->intended(route('dashboard'));
