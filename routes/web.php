@@ -22,9 +22,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/ouder', [OudersController::class, 'index'])->name('ouders.index');
 });
 
-Route::middleware(['auth', 'role:ouder'])->group(function () {
-    
-});
+Route::middleware(['auth', 'role:ouder'])->group(function () {});
 
 
 Route::get('/zwemlessen', [ZwemDocentController::class, 'index'])->name('zwemlessen.index');
