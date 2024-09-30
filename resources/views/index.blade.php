@@ -18,7 +18,10 @@
             </div>
             <div class="justify-center absolute top-1/3 w-screen flex">
                 <div class="text-center flex pl-3">
-                    <p class="font-sans tracking-tighter font-medium text-white text-5xl ">Welkom!</p>
+                    <p class="font-sans tracking-tighter font-medium text-white text-5xl ">Geniet van goedkoop <br>
+                        en
+                        veilig
+                        zwemmen</p>
                 </div>
             </div>
             <div class="justify-center absolute top-2/4 w-screen flex">

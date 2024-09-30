@@ -1,11 +1,12 @@
 <?php
 
+use App\Http\Controllers\Controller;
 use App\Http\Controllers\OudersController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
 
 Route::get('/dashboard', function () {
@@ -23,5 +24,11 @@ Route::middleware('auth')->group(function () {
 Route::middleware(['auth', 'role:ouder'])->group(function () {
     
 });
+
+
+// Route::get('/index', function () {
+//     return view('index');
+// });
+
 
 require __DIR__ . '/auth.php';
