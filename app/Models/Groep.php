@@ -30,8 +30,5 @@ class Groep extends Model
         return $this->hasMany(Leerling::class, 'leerling_id');
     }
 
-    public function zwemles()
-    {
-        return $this->belongsTo(Zwemles::class, 'zwemles_id');
-    }
+ 
 }

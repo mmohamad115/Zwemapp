@@ -21,10 +21,6 @@ class Zwemles extends Model
     ];
 
 
-    public function groepen()
-    {
-        return $this->hasMany(Groep::class);
-    }
 
     public function groepen()
     {
