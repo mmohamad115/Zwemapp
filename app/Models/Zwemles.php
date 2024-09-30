@@ -20,7 +20,6 @@ class Zwemles extends Model
         'tijdstip',
     ];
 
-
     public function groepen()
     {
         return $this->hasMany(Groep::class, 'zwemles_id');
