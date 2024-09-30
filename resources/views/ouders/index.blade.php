@@ -26,7 +26,7 @@
     <!-- Contenedor principal flex -->
     <div class="flex">
         <!-- Navegación lateral -->
-        <aside class="bg-gray-800 text-white w-64 h-screen p-4 overflow-y-auto">
+        <aside class="bg-gray-800 text-white w-64 h-screen p-4 overflow-y-auto relative">
             <nav>
                 <ul class="space-y-2">
                     <li class="opcion-con-desplegable">
@@ -129,6 +129,15 @@
                     </li>
                 </ul>
             </nav>
+
+            <!-- Logout button positioned at the bottom left corner -->
+            <form method="POST" action="{{ route('logout') }}" class="absolute bottom-4 left-4">
+                @csrf
+                <button type="submit" class="text-red-500 hover:text-red-700 flex items-center">
+                    <i class="fas fa-sign-out-alt mr-2 text-xs"></i>
+                    Logout
+                </button>
+            </form>
         </aside>
 
         <!-- Contenido principal -->
@@ -145,6 +154,10 @@
                     <p>{{ $fb->content }} (door {{ $fb->zwemDocent->voornaam }} {{ $fb->zwemDocent->achternaam }})</p>
                 @endforeach
             @endforeach
+            <form method="POST" action="{{ route('logout') }}">
+                @csrf
+                <button type="submit">Logout</button>
+            </form>
         </main>
     </div>
 
