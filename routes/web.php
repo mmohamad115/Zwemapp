@@ -44,4 +44,13 @@ Route::delete('/zwemlessen/{zwemles}', [ZwemDocentController::class, 'destroy'])
 //     return view('index');
 // });
 
+
+Route::get('/feedback', [ZwemDocentController::class, 'feedbackIndex'])->name('feedback.index');
+Route::get('/feedback/create', [ZwemDocentController::class, 'feedbackCreate'])->name('feedback.create');
+Route::post('/feedback', [ZwemDocentController::class, 'storeFeedback'])->name('feedback.store');
+
+Route::get('/feedback/{feedback}', [ZwemDocentController::class, 'showFeedback'])->name('feedback.show');
+Route::get('/feedback/{feedback}/edit', [ZwemDocentController::class, 'editFeedback'])->name('feedback.edit');
+Route::delete('/feedback/{feedback}', [ZwemDocentController::class, 'destroyFeedback'])->name('feedback.destroy');
+
 require __DIR__ . '/auth.php';

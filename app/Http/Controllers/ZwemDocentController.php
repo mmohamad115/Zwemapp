@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\ZwemLes;
 use Illuminate\Http\Request;
+use App\Models\Feedback;
+use App\Models\Zwem_Docent;
 
 class ZwemDocentController extends Controller
 {
@@ -71,5 +73,34 @@ class ZwemDocentController extends Controller
     {      
         $zwemles->delete();
         return redirect()->route('zwemlessen.index')->with('success', 'Zwemles deleted successfully!');
+    }
+
+    public function feedbackIndex()
+    {
+        $feedback = Feedback::all();
+        return view('zwemdocenten.feedback', compact('feedback'));
+    }
+
+    public function feedbackCreate()
+    {
+        $zwemDocenten = Zwem_Docent::all();
+        return view('zwemdocenten.createFeedback', compact('zwemDocenten')); 
+    }
+
+    public function storeFeedback(Request $request)
+    {
+        $request->validate([
+            'content' => 'required|string',
+            // 'zwem_docent_id' => 'required|exists:zwem_docenten,zwem_docent_id',
+        ]);
+
+        Feedback::create([
+            'content' => $request->content,
+            'aanmaakdatum' => now(),
+            // 'zwem_docent_id' => $request->zwem_docent_id,
+            // 'leerling_id' => $request->leerling_id,
+        ]);
+
+        return redirect()->route('feedback.index')->with('success', 'Feedback submitted successfully!');
     }
 }
