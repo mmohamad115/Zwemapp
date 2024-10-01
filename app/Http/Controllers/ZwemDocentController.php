@@ -28,7 +28,7 @@ class ZwemDocentController extends Controller
             'naam' => 'required|string|max:255',
             'beschrijving' => 'required|string',
             'duurtijd' => 'required|integer',
-            'tijdstip' => 'required|date_format:H:i',
+            'tijdstip' => 'required|date_format:Y-m-d\TH:i',
         ]);
 
         ZwemLes::create([
@@ -57,7 +57,7 @@ class ZwemDocentController extends Controller
             'naam' => 'required|string|max:255',
             'beschrijving' => 'required|string',
             'duurtijd' => 'required|integer',
-            'tijdstip' => 'required|date_format:H:i',
+            'tijdstip' => 'required|date_format:Y-m-d\TH:i',
         ]);
 
         $zwemles->update([

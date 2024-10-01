@@ -22,9 +22,20 @@
 
         <div class="form-group">
             <label for="tijdstip">Tijdstip</label>
-            <input type="time" name="tijdstip" class="form-control" required>
+            <input type="datetime-local" name="tijdstip" class="form-control" required>
         </div>
-
+        {{-- <div class="form-group">
+            <label for="groep">Groep</label>
+            <select name="groep" id="groep" class="form-control" required>
+                <option value="">Select a groep</option>
+                @foreach ($groepen as $groep)
+                    <option value="{{ $groep->groep_id }}">{{ $groep->groepNaam }}</option>
+                @endforeach
+            </select>
+            @error('groep')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
+        </div> --}}
         <button type="submit" class="btn btn-primary">Create Zwemles</button>
     </form>
 @endsection

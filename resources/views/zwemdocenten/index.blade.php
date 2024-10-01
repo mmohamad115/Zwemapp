@@ -15,6 +15,7 @@
                 <th>Beschrijving</th>
                 <th>Duurtijd (minuten)</th>
                 <th>Tijdstip</th>
+                {{-- <th>Groep</th> --}}
                 <th>Acties</th>
             </tr>
         </thead>
@@ -25,6 +26,7 @@
                     <td>{{ $zwemles->beschrijving }}</td>
                     <td>{{ $zwemles->duurtijd }} minuten</td>
                     <td>{{ $zwemles->tijdstip }}</td>
+                    {{-- <td>{{ $zwemles->groep->groepNaam }}</td> --}}
                     <td>
                         <a href="{{ route('zwemlessen.show', $zwemles) }}" class="btn btn-info">Bekijk</a>
                         <a href="{{ route('zwemlessen.edit', $zwemles) }}" class="btn btn-warning">Bewerk</a>
