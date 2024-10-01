@@ -31,7 +31,6 @@ Route::middleware(['auth', 'role:ouder'])->group(function () {
     // Add any additional routes for 'ouder' role here
 });
 
-
 Route::get('/zwemlessen', [ZwemDocentController::class, 'index'])->name('zwemlessen.index');
 Route::get('/zwemlessen/create', [ZwemDocentController::class, 'create'])->name('zwemlessen.create');
 Route::post('/zwemlessen', [ZwemDocentController::class, 'store'])->name('zwemlessen.store');
