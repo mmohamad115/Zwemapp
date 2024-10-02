@@ -118,7 +118,7 @@ class ZwemDocentController extends Controller
 
         Feedback::create([
             'content' => $request->content,
-            'aanmaakdatum' => now(),
+            'aanmaakdatum' => now()->toDateString(),
             // 'zwem_docent_id' => $request->zwem_docent_id,
             'leerling_id' => $request->leerling_id,
         ]);
