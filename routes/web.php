@@ -43,14 +43,16 @@ Route::delete('/zwemlessen/{zwemles}', [ZwemDocentController::class, 'destroy'])
 // Route::get('/index', function () {
 //     return view('index');
 // });
+Route::get('/leerlingen', [ZwemDocentController::class, 'leerlingen'])->name('leerlingen.index');
+// Route::get('/zwemdocenten/leerlingen', [ZwemDocentController::class, 'leerlingen'])->name('zwemdocenten.leerlingen');
+Route::get('/leerlingen/{leerling}', [ZwemDocentController::class, 'showLeerling'])->name('leerlingen.show');
+Route::delete('/leerlingen/{leerling}', [ZwemDocentController::class, 'destroyLeerling'])->name('leerlingen.destroy');
 
-
-Route::get('/feedback', [ZwemDocentController::class, 'feedbackIndex'])->name('feedback.index');
-Route::get('/feedback/create', [ZwemDocentController::class, 'feedbackCreate'])->name('feedback.create');
 Route::post('/feedback', [ZwemDocentController::class, 'storeFeedback'])->name('feedback.store');
-
-Route::get('/feedback/{feedback}', [ZwemDocentController::class, 'showFeedback'])->name('feedback.show');
-Route::get('/feedback/{feedback}/edit', [ZwemDocentController::class, 'editFeedback'])->name('feedback.edit');
+Route::get('/feedback/create', [ZwemDocentController::class, 'feedbackCreate'])->name('feedback.create');
+Route::put('/feedback/{feedback}', [ZwemDocentController::class, 'updateFeedback'])->name('feedback.update');
 Route::delete('/feedback/{feedback}', [ZwemDocentController::class, 'destroyFeedback'])->name('feedback.destroy');
+
+Route::get('/feedback/{feedback}/edit', [ZwemDocentController::class, 'editFeedback'])->name('feedback.edit');
 
 require __DIR__ . '/auth.php';
