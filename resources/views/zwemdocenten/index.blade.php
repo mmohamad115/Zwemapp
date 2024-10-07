@@ -156,8 +156,13 @@
                 <tr class="">
                     <td>{{ $zwemles->naam }}</td>
                     <td>{{ $zwemles->beschrijving }}</td>
+
                     <td>{{ $zwemles->duurtijd }}</td>
                     <td>{{ $zwemles->tijdstip }}</td>
+
+                    <td>{{ $zwemles->duurtijd }} minuten</td>
+                    <td>{{ \Carbon\Carbon::parse($zwemles->tijdstip)->format('Y-m-d H:i') }}</td>
+
                     <td>
                         <a href="{{ route('zwemlessen.show', $zwemles) }}"
                             class="bg-cyan-400 px-2 py-2 rounded-lg ">Bekijk</a>
