@@ -11,6 +11,10 @@ Route::get('/', function () {
     return view('index');
 });
 
+Route::get('/login', function () {
+    return view('login');
+});
+
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
 // })->middleware(['auth', 'verified'])->name('dashboard');
@@ -30,7 +34,6 @@ Route::middleware(['auth', 'role:ouder'])->group(function () {});
 Route::middleware(['auth', 'role:ouder'])->group(function () {
     // Add any additional routes for 'ouder' role here
 });
-
 
 Route::get('/zwemlessen', [ZwemDocentController::class, 'index'])->name('zwemlessen.index');
 Route::get('/zwemlessen/create', [ZwemDocentController::class, 'create'])->name('zwemlessen.create');
