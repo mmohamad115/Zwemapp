@@ -14,7 +14,24 @@
             <div class="hidden xl:flex items-center space-x-5 items-center">
                 <div class="hidden xl:flex items-center space-x-5 items-center">
                     <ul class="hidden md:flex px-4 mx-auto font-semibold font-heading space-x-12">
-                        <li><a class="hover:text-cyan-400" href="{{ route('login') }}">Login</a></li>
+                        {{-- <li><a class="hover:text-cyan-400" href="{{ route('login') }}">Login</a></li> --}}
+                        @if (Route::has('login'))
+                            <nav>
+                                @auth
+                                    @if (Auth::user()->role === 'ouder')
+                                        <a href="{{ route('ouders.index') }}" class="hover:text-cyan-400">
+                                            Dashboard ouder
+                                        </a>
+                                    @elseif (Auth::user()->role === 'zwem_docent')
+                                        <a href="{{ route('profile.edit') }}" class="hover:text-cyan-400">
+                                            Dashboard zwemdocent
+                                        </a>
+                                    @endif
+                                @else
+                                    <a class="hover:text-cyan-400" href="{{ route('login') }}">Login</a>
+                                @endauth
+                            </nav>
+                        @endif
                     </ul>
                 </div>
             </div>
