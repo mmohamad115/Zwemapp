@@ -14,14 +14,10 @@ return new class extends Migration
         Schema::create('groepen', function (Blueprint $table) {
             $table->id('groep_id');
             $table->string('groepNaam');
-            $table->unsignedBigInteger('leerling_id');
             $table->unsignedBigInteger('zwem_docent_id');
-            $table->unsignedBigInteger('zwemles_id');
             $table->timestamps();
 
-            $table->foreign('leerling_id')->references('leerling_id')->on('leerlingen')->onDelete('cascade');
             $table->foreign('zwem_docent_id')->references('zwem_docent_id')->on('zwem_docenten')->onDelete('cascade');
-            $table->foreign('zwemles_id')->references('zwemles_id')->on('zwemlessen')->onDelete('cascade');
         });
     }
 

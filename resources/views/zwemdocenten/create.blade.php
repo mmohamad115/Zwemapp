@@ -88,7 +88,7 @@
                             </div>
                         </div>
                         <form action="{{ route('zwemlessen.store') }}" method="POST">
-
+                            @csrf
                             <div class="divide-y divide-gray-200">
                                 <div class="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
                                     <div class="flex flex-col">
@@ -167,26 +167,4 @@
         </form> --}}
     </div>
 </body>
-
-</html>
-
-        <div class="form-group">
-            <label for="tijdstip">Tijdstip</label>
-            <input type="datetime-local" name="tijdstip" class="form-control" required>
-        </div>
-        {{-- <div class="form-group">
-            <label for="groep">Groep</label>
-            <select name="groep" id="groep" class="form-control" required>
-                <option value="">Select a groep</option>
-                @foreach ($groepen as $groep)
-                    <option value="{{ $groep->groep_id }}">{{ $groep->groepNaam }}</option>
-                @endforeach
-            </select>
-            @error('groep')
-                <div class="alert alert-danger">{{ $message }}</div>
-            @enderror
-        </div> --}}
-        <button type="submit" class="btn btn-primary">Create Zwemles</button>
-    </form>
-@endsection
 

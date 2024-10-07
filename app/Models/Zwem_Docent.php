@@ -11,13 +11,17 @@ class Zwem_Docent extends Model
 
     protected $table = 'zwem_docenten';
 
+    protected $primaryKey = 'zwem_docent_id';
     protected $fillable = [
         'voornaam',
         'achternaam',
         'user_id',
     ];
 
-    protected $primaryKey = 'zwem_docent_id';
+    public function groep()
+    {
+        return $this->belongsTo(Groep::class);
+    }
 
-}
     
+}
