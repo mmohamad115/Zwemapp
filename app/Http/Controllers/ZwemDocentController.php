@@ -29,12 +29,6 @@ class ZwemDocentController extends Controller
 
         // Get zwemlessen connected to the logged-in zwemdocent
         $zwemlessen = Zwemles::all();
-        // $zwemlessen = Zwemles::with('groepen.zwemles')->where('zwem_docent_id', $zwemdocent->zwem_docent_id)->get();
-        // $zwemlessen = Zwemles::whereHas('groepen', function($query) use ($zwemdocent) {
-        //     $query->where('zwem_docent_id', $zwemdocent->zwem_docent_id);
-        // })->with('groepen')->get();
-
-        // dd($zwemlessen);
 
         return view('zwemdocenten.index', compact(['zwemlessen', 'zwemdocent']));
     }
