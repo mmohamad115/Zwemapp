@@ -55,4 +55,6 @@ Route::delete('/feedback/{feedback}', [ZwemDocentController::class, 'destroyFeed
 
 Route::get('/feedback/{feedback}/edit', [ZwemDocentController::class, 'editFeedback'])->name('feedback.edit');
 
+Route::put('/leerlingen/{leerling}', [ZwemDocentController::class, 'updateLeerling'])->name('leerlingen.update');
+
 require __DIR__ . '/auth.php';

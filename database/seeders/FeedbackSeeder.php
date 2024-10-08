@@ -16,8 +16,8 @@ class FeedbackSeeder extends Seeder
             [
                 'content' => 'Goede vooruitgang, blijf oefenen op je armbewegingen.',
                 'aanmaakdatum' => '2024-09-01',
-                'leerling_id' => 1, // Zorg dat deze leerling bestaat in de 'leerlingen' tabel
-                'zwem_docent_id' => 1, // Zorg dat deze zwemdocent bestaat in de 'zwem_docenten' tabel
+                'leerling_id' => 1,
+                'zwem_docent_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now(),
             ],

@@ -130,17 +130,33 @@ class ZwemDocentController extends Controller
     public function leerlingen()
     {
         $leerlingen = Leerling::all();
+        $totalLessons = ZwemLes::count();
 
-        return view('zwemdocenten.leerlingen', compact('leerlingen'));
+        return view('zwemdocenten.leerlingen', compact('leerlingen', 'totalLessons'));
     }
 
     public function showLeerling(Leerling $leerling)
     {
-        return view('zwemdocenten.showLeerling', compact('leerling'));
+        $totalLessons = ZwemLes::count();
+
+        return view('zwemdocenten.showleerling', compact('leerling', 'totalLessons'));
     }
     public function destroyLeerling(Leerling $leerling)
     {
         $leerling->delete();
         return redirect()->route('leerlingen.index')->with('success', 'Leerling succesvol verwijderd!');
+    }
+
+    public function updateLeerling(Request $request, Leerling $leerling)
+    {
+        $request->validate([
+            'lessons_completed' => 'required|integer|min:0|max:' . ZwemLes::count(),
+        ]);
+
+        $leerling->update([
+            'lessons_completed' => $request->input('lessons_completed'),
+        ]);
+
+        return redirect()->route('leerlingen.index')->with('success', 'Voortgang bijgewerkt.');
     }
 }

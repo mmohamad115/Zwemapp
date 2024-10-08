@@ -11,6 +11,7 @@
                 <th>Geboortedatum</th>
                 <th>Diploma</th>
                 <th>Feedback</th>
+                <th>Voortgang</th>
                 <th>Acties</th>
             </tr>
         </thead>
@@ -37,6 +38,15 @@
                         @endforeach
                         <a href="{{ route('feedback.create', ['leerling_id' => $leerling->id]) }}"
                             class="btn btn-primary btn-sm">Voeg Feedback Toe</a>
+                    </td>
+                    <td>
+                        <form action="{{ route('leerlingen.update', $leerling) }}" method="POST" class="d-flex align-items-center">
+                            @csrf
+                            @method('PUT')
+                            <input type="number" name="lessons_completed" value="{{ $leerling->lessons_completed }}" min="0" max="{{ $totalLessons }}" class="form-control form-control-sm me-2" style="width: 80px;">
+                            <button type="submit" class="btn btn-success btn-sm">Update</button>
+                        </form>
+                        <div>{{ $leerling->lessons_completed }} / {{ $totalLessons }}</div>
                     </td>
                     <td>
                         <a href="{{ route('leerlingen.show', $leerling) }}" class="btn btn-info btn-sm">Bekijk</a>
