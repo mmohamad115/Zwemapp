@@ -17,6 +17,7 @@ class Leerling extends Model
         'geboortedatum',
         'diploma',
         'ouder_id',
+        'lessons_completed',
     ];
 
     protected $primaryKey = 'leerling_id';
@@ -32,5 +33,4 @@ class Leerling extends Model
     {
         return $this->hasMany(Feedback::class, 'leerling_id', 'leerling_id');
     }
-
 }

@@ -18,8 +18,10 @@ return new class extends Migration
             $table->date('geboortedatum');
             $table->string('diploma')->nullable();
             $table->unsignedBigInteger('ouder_id');
+            $table->integer('lessons_completed')->default(0);
             $table->unsignedBigInteger('groep_id')->nullable();
             
+
             $table->timestamps();
 
             $table->foreign('ouder_id')->references('ouder_id')->on('ouders')->onDelete('cascade');

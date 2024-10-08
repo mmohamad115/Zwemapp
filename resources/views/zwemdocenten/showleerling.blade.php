@@ -12,6 +12,19 @@
     <script src="https://kit.fontawesome.com/db1f6bf93f.js" crossorigin="anonymous"></script>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
+    <p><strong>Voornaam:</strong> {{ $leerling->voornaam }}</p>
+    <p><strong>Achternaam:</strong> {{ $leerling->achternaam }}</p>
+    <p><strong>Geboortedatum:</strong> {{ $leerling->geboortedatum }}</p>
+    <p><strong>Diploma:</strong> {{ $leerling->diploma }}</p>
+
+    <p><strong>Voortgang:</strong> {{ $leerling->lessons_completed }} / {{ $totalLessons }}</p>
+
+    <p><strong>Feedback:</strong></p>
+    <ul>
+        @foreach ($leerling->feedback as $feedback)
+            <li>{{ $feedback->content }} ({{ $feedback->aanmaakdatum }})</li>
+        @endforeach
+    </ul>
 
 <body class="overflow-x-hidden bg-gray-100">
     <div class="">

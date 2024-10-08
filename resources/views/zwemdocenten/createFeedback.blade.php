@@ -48,6 +48,18 @@
             <div class="flex items-center space-x-4">
             </div>
         </div>
+        <div class="form-group">
+            <label for="leerling_id">Leerling</label>
+            <select name="leerling_id" id="leerling_id" class="form-control" required>
+                <option value="">Select a leerling</option>
+                @foreach ($leerlingen as $leerling)
+                    <option value="{{ $leerling->leerling_id }}">{{ $leerling->voornaam }} {{ $leerling->achternaam }}
+                    </option>
+                @endforeach
+            </select>
+            @error('leerling_id')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
     </div>
     <div class="flex">
         <aside class="bg-cyan-400 text-white w-64 h-screen p-4 overflow-y-auto relative">
