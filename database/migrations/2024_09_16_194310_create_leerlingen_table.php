@@ -18,9 +18,12 @@ return new class extends Migration
             $table->date('geboortedatum');
             $table->string('diploma')->nullable();
             $table->unsignedBigInteger('ouder_id');
+            $table->unsignedBigInteger('groep_id')->nullable();
+            
             $table->timestamps();
 
             $table->foreign('ouder_id')->references('ouder_id')->on('ouders')->onDelete('cascade');
+            $table->foreign('groep_id')->references('groep_id')->on('groepen')->onDelete('cascade');
         });
     }
 

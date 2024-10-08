@@ -15,15 +15,15 @@ class OuderSeeder extends Seeder
     {
         DB::table('ouders')->insert([
             [
-                'voornaam' => 'Jan',
-                'achternaam' => 'Jansen',
+                'voornaam' => 'Cristiano',
+                'achternaam' => 'Ronaldo',
                 'user_id' => 1, // Verwijzing naar de eerste gebruiker (ouder)
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
-                'voornaam' => 'Pieter',
-                'achternaam' => 'Pietersen',
+                'voornaam' => 'Limonel',
+                'achternaam' => 'Nessi',
                 'user_id' => 2, // Verwijzing naar de tweede gebruiker (ouder)
                 'created_at' => now(),
                 'updated_at' => now(),
