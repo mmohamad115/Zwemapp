@@ -9,6 +9,10 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 
 Route::get('/', function () {
     return view('index');
+})->name('home');
+
+Route::get('/login', function () {
+    return view('login');
 });
 
 // Route::get('/dashboard', function () {
@@ -22,13 +26,6 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/ouder', [OudersController::class, 'index'])->name('ouders.index');
     Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
-});
-
-
-Route::middleware(['auth', 'role:ouder'])->group(function () {});
-
-Route::middleware(['auth', 'role:ouder'])->group(function () {
-    // Add any additional routes for 'ouder' role here
 });
 
 

@@ -59,10 +59,10 @@ class DatabaseSeeder extends Seeder
 
         $this->call(OuderSeeder::class);
         $this->call(ZwemDocentSeeder::class);
-        $this->call(LeerlingenSeeder::class);
-        $this->call(FeedbackSeeder::class);
         $this->call(ZwemlessenSeeder::class);
         $this->call(Groepseeder::class);
+        $this->call(LeerlingenSeeder::class);
+        $this->call(FeedbackSeeder::class);
         $this->call(EindexamenSeeder::class);
     }
 }

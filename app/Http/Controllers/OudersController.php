@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Leerling;
 use App\Models\Ouder;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class OudersController extends Controller
 {
@@ -13,11 +14,16 @@ class OudersController extends Controller
      */
     public function index()
     {
-        $ouder = Ouder::where('user_id', auth()->id())->first();
+        $user = auth()->user();
+
+        if ($user->role !== 'ouder') {
+            Auth::logout();
+            return redirect()->route('login')->with('error', 'Access denied.');
+        }
+
+        $ouder = Ouder::where('user_id', $user->id)->first();
 
         $leerlingen = Leerling::with(['groep', 'feedback.zwemDocent'])->where('ouder_id', $ouder->ouder_id)->get();
-
-        // dd($leerlingen); 
 
         return view('ouders.index', compact(['leerlingen', 'ouder']));
     }

@@ -9,7 +9,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="overflow-x-hidden ">
+<body class="overflow-x-hidden">
     <div class="">
         @include('header')
         <div class="">

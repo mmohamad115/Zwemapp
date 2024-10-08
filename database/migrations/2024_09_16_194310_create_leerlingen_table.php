@@ -19,9 +19,13 @@ return new class extends Migration
             $table->string('diploma')->nullable();
             $table->unsignedBigInteger('ouder_id');
             $table->integer('lessons_completed')->default(0);
+            $table->unsignedBigInteger('groep_id')->nullable();
+            
+
             $table->timestamps();
 
             $table->foreign('ouder_id')->references('ouder_id')->on('ouders')->onDelete('cascade');
+            $table->foreign('groep_id')->references('groep_id')->on('groepen')->onDelete('cascade');
         });
     }
 

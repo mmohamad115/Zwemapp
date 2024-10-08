@@ -25,7 +25,7 @@ class Leerling extends Model
 
     public function groep()
     {
-        return $this->hasOne(Groep::class, 'leerling_id', 'leerling_id');
+        return $this->belongsTo(Groep::class, 'leerling_id');
     }
 
 
