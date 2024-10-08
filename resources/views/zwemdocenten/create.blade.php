@@ -69,6 +69,15 @@
                             </div>
                         </div>
                     </li>
+                    </li>
+                    <li class="opcion-con-desplegable">
+                        <div class="flex items-center justify-between p-2 hover:bg-cyan-300 cursor-pointer rounded-lg">
+                            <div class="flex items-center">
+                                <i class="fa-solid fa-children mr-2"></i>
+                                <a href="{{ route('leerlingen.index') }}">Mijn leerlingen</a>
+                            </div>
+                        </div>
+                    </li>
                 </ul>
             </nav>
         </aside>
@@ -131,7 +140,8 @@
                                 </div>
                                 <div class="pt-4 flex items-center space-x-4">
                                     <button type="submit"
-                                        class="bg-cyan-400 flex justify-center items-center w-full text-white px-4 py-3 rounded-md focus:outline-none">Create</button>
+                                        class="bg-cyan-400 flex justify-center items-center w-full text-white px-4 py-3 rounded-md focus:outline-none">Maak
+                                        aan</button>
                                 </div>
                             </div>
                         </form>
@@ -167,4 +177,5 @@
         </form> --}}
     </div>
 </body>
+</html>
 
