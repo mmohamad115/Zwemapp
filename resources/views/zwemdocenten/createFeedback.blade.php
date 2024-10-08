@@ -90,10 +90,19 @@
                                 class="h-14 w-14 bg-cyan-400 rounded-full flex flex-shrink-0 justify-center items-center text-cyan-600 text-2xl font-mono">
                                 i</div>
                             <div class="block pl-2 font-semibold text-xl self-start text-gray-700">
-                                <h2 class="leading-relaxed">Maak een zwemles aan</h2>
-                                <p class="text-sm text-gray-500 font-normal leading-relaxed">hier kan je een zwemles
-                                    aanmaken,
+                                <h2 class="leading-relaxed">Geef een feedback</h2>
+                                <p class="text-sm text-gray-500 font-normal leading-relaxed">hier kan je een feedback
+                                    achterlaten,
                                     vul alle velden in.</p>
+                                @if ($errors->any())
+                                    <div class="alert alert-danger">
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endif
                             </div>
                         </div>
                         <form action="{{ route('feedback.store') }}" method="POST">
