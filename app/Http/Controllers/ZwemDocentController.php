@@ -38,7 +38,7 @@ class ZwemDocentController extends Controller
     }
 
     public function create()
-    { 
+    {
         return view('zwemdocenten.create');
     }
 
@@ -77,7 +77,7 @@ class ZwemDocentController extends Controller
             'naam' => 'required|string|max:255',
             'beschrijving' => 'required|string',
             'duurtijd' => 'required|integer',
-            'tijdstip' => 'required|date_format:Y-m-d\TH:i',
+            'tijdstip' => 'required|date_format:H:i',
         ]);
 
         $zwemles->update([
@@ -90,7 +90,7 @@ class ZwemDocentController extends Controller
         return redirect()->route('zwemlessen.index')->with('success', 'Zwemles succesvol geupdate!');
     }
     public function destroy(Zwemles $zwemles)
-    {      
+    {
         $zwemles->delete();
         return redirect()->route('zwemlessen.index')->with('success', 'Zwemles succesvol verwijderd!');
     }
