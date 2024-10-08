@@ -7,8 +7,8 @@
     <p><strong>Achternaam:</strong> {{ $leerling->achternaam }}</p>
     <p><strong>Geboortedatum:</strong> {{ $leerling->geboortedatum }}</p>
     <p><strong>Diploma:</strong> {{ $leerling->diploma }}</p>
-    
-    <p><strong>Voortgang:</strong> {{ $leerling->lessons_completed }} / {{ $totalLessons }}</p> <!-- Display progress -->
+
+    <p><strong>Voortgang:</strong> {{ $leerling->lessons_completed }} / {{ $totalLessons }}</p>
 
     <p><strong>Feedback:</strong></p>
     <ul>

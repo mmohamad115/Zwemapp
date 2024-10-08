@@ -17,7 +17,8 @@
             <select name="leerling_id" id="leerling_id" class="form-control" required>
                 <option value="">Select a leerling</option>
                 @foreach ($leerlingen as $leerling)
-                    <option value="{{ $leerling->leerling_id }}">{{ $leerling->voornaam }} {{ $leerling->achternaam }}</option>
+                    <option value="{{ $leerling->leerling_id }}">{{ $leerling->voornaam }} {{ $leerling->achternaam }}
+                    </option>
                 @endforeach
             </select>
             @error('leerling_id')

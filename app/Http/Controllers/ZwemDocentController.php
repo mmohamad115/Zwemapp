@@ -119,8 +119,8 @@ class ZwemDocentController extends Controller
         Feedback::create([
             'content' => $request->content,
             'aanmaakdatum' => now()->toDateString(),
-            // 'zwem_docent_id' => $request->zwem_docent_id,
             'leerling_id' => $request->leerling_id,
+            // 'zwem_docent_id' => $request->zwem_docent_id,
         ]);
 
         return redirect()->route('leerlingen.index')->with('success', 'Feedback succesvol aangemaakt!');
