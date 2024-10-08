@@ -109,30 +109,6 @@ class ZwemDocentController extends Controller
         return redirect()->route('leerlingen.index')->with('success', 'Feedback succesvol verwijderd!');
     }
 
-    public function feedbackCreate()
-    {
-        $zwemDocenten = Zwem_Docent::all();
-        $leerlingen = Leerling::all();
-        return view('zwemdocenten.createFeedback', compact('zwemDocenten', 'leerlingen'));
-    }
-
-    public function storeFeedback(Request $request)
-    {
-        $request->validate([
-            'content' => 'required|string',
-            'leerling_id' => 'required|exists:leerlingen,leerling_id',
-        ]);
-
-        Feedback::create([
-            'content' => $request->content,
-            'aanmaakdatum' => now()->toDateString(),
-            'leerling_id' => $request->leerling_id,
-            // 'zwem_docent_id' => $request->zwem_docent_id,
-        ]);
-
-        return redirect()->route('leerlingen.index')->with('success', 'Feedback succesvol aangemaakt!');
-    }
-
     //Leerlingen pagina
     public function leerlingen()
     {
