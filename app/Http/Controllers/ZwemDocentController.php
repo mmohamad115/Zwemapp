@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreFeedbackRequest;
+use App\Http\Requests\StoreZwemDocentRequest;
 use App\Models\Zwem_Docent;
 use App\Models\Zwemles;
 use Illuminate\Http\Request;
@@ -27,12 +29,6 @@ class ZwemDocentController extends Controller
 
         // Get zwemlessen connected to the logged-in zwemdocent
         $zwemlessen = Zwemles::all();
-        // $zwemlessen = Zwemles::with('groepen.zwemles')->where('zwem_docent_id', $zwemdocent->zwem_docent_id)->get();
-        // $zwemlessen = Zwemles::whereHas('groepen', function($query) use ($zwemdocent) {
-        //     $query->where('zwem_docent_id', $zwemdocent->zwem_docent_id);
-        // })->with('groepen')->get();
-
-        // dd($zwemlessen);
 
         return view('zwemdocenten.index', compact(['zwemlessen', 'zwemdocent']));
     }
@@ -42,21 +38,9 @@ class ZwemDocentController extends Controller
         return view('zwemdocenten.create');
     }
 
-    public function store(Request $request)
+    public function store(StoreZwemDocentRequest $request)
     {
-        $request->validate([
-            'naam' => 'required|string|max:255',
-            'beschrijving' => 'required|string',
-            'duurtijd' => 'required|integer',
-            'tijdstip' => 'required|date_format:H:i',
-        ]);
-
-        Zwemles::create([
-            'naam' => $request->naam,
-            'beschrijving' => $request->beschrijving,
-            'duurtijd' => $request->duurtijd,
-            'tijdstip' => $request->tijdstip,
-        ]);
+        Zwemles::create($request->validated());
 
         return redirect()->route('zwemlessen.index')->with('success', 'Zwemles succesvol aangemaakt!');
     }
@@ -71,21 +55,12 @@ class ZwemDocentController extends Controller
         return view('zwemdocenten.edit', compact('zwemles'));
     }
 
-    public function update(Request $request, Zwemles $zwemles)
+    public function update(StoreZwemDocentRequest $request, Zwemles $zwemles)
     {
-        $request->validate([
-            'naam' => 'required|string|max:255',
-            'beschrijving' => 'required|string',
-            'duurtijd' => 'required|integer',
-            'tijdstip' => 'required|date_format:H:i',
-        ]);
-
-        $zwemles->update([
-            'naam' => $request->naam,
-            'beschrijving' => $request->beschrijving,
-            'duurtijd' => $request->duurtijd,
-            'tijdstip' => $request->tijdstip,
-        ]);
+        Feedback::create(array_merge(
+            $request->validated(),
+            ['aanmaakdatum' => now()->toDateString()]
+        )); 
 
         return redirect()->route('zwemlessen.index')->with('success', 'Zwemles succesvol geupdate!');
     }
@@ -96,20 +71,31 @@ class ZwemDocentController extends Controller
     }
 
     //Feedback pagina
+    public function feedbackCreate()
+    {
+        $zwemDocenten = Zwem_Docent::all();
+        $leerlingen = Leerling::all();
+        return view('zwemdocenten.createFeedback', compact('zwemDocenten', 'leerlingen'));
+    }
+
+    public function storeFeedback(StoreFeedbackRequest $request)
+    {
+        Feedback::create(array_merge(
+            $request->validated(),
+            ['aanmaakdatum' => now()->toDateString()]
+        )); 
+
+        return redirect()->route('leerlingen.index')->with('success', 'Feedback succesvol aangemaakt!');
+    }
+
     public function editFeedback(Feedback $feedback)
     {
         return view('zwemdocenten.editFeedback', compact('feedback'));
     }
 
-    public function updateFeedback(Request $request, Feedback $feedback)
+    public function updateFeedback(StoreFeedbackRequest $request, Feedback $feedback)
     {
-        $request->validate([
-            'content' => 'required|string',
-        ]);
-
-        $feedback->update([
-            'content' => $request->content,
-        ]);
+        $feedback->update($request->validated());
 
         return redirect()->route('leerlingen.index')->with('success', 'Feedback succesvol geupdate!');
     }
@@ -120,46 +106,37 @@ class ZwemDocentController extends Controller
         return redirect()->route('leerlingen.index')->with('success', 'Feedback succesvol verwijderd!');
     }
 
-
-    public function feedbackCreate()
-    {
-        $zwemDocenten = Zwem_Docent::all();
-        $leerlingen = Leerling::all();
-        return view('zwemdocenten.createFeedback', compact('zwemDocenten', 'leerlingen'));
-    }
-
-    public function storeFeedback(Request $request)
-    {
-        $request->validate([
-            'content' => 'required|string',
-            'leerling_id' => 'required|exists:leerlingen,leerling_id',
-        ]);
-
-        Feedback::create([
-            'content' => $request->content,
-            'aanmaakdatum' => now()->toDateString(),
-            // 'zwem_docent_id' => $request->zwem_docent_id,
-            'leerling_id' => $request->leerling_id,
-        ]);
-
-        return redirect()->route('leerlingen.index')->with('success', 'Feedback succesvol aangemaakt!');
-    }
-
     //Leerlingen pagina
     public function leerlingen()
     {
         $leerlingen = Leerling::all();
+        $totalLessons = ZwemLes::count();
 
-        return view('zwemdocenten.leerlingen', compact('leerlingen'));
+        return view('zwemdocenten.leerlingen', compact('leerlingen', 'totalLessons'));
     }
 
     public function showLeerling(Leerling $leerling)
     {
-        return view('zwemdocenten.showLeerling', compact('leerling'));
+        $totalLessons = ZwemLes::count();
+
+        return view('zwemdocenten.showleerling', compact('leerling', 'totalLessons'));
     }
     public function destroyLeerling(Leerling $leerling)
     {
         $leerling->delete();
         return redirect()->route('leerlingen.index')->with('success', 'Leerling succesvol verwijderd!');
+    }
+
+    public function updateLeerling(Request $request, Leerling $leerling)
+    {
+        $request->validate([
+            'lessons_completed' => 'required|integer|min:0|max:' . ZwemLes::count(),
+        ]);
+
+        $leerling->update([
+            'lessons_completed' => $request->input('lessons_completed'),
+        ]);
+
+        return redirect()->route('leerlingen.index')->with('success', 'Voortgang bijgewerkt.');
     }
 }
