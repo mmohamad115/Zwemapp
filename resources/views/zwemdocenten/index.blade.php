@@ -91,45 +91,6 @@
             </div>
         </div>
     </div>
-    {{-- <table class="table text-gray-950">
-        <thead>
-            <tr>
-                <th>Naam</th>
-                <th>Beschrijving</th>
-                <th>Duurtijd</th>
-                <th>Tijdstip</th>
-                <th>Acties</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($zwemlessen as $zwemles)
-                <tr class="">
-                    <td>{{ $zwemles->naam }}</td>
-                    <td>{{ $zwemles->beschrijving }}</td>
-
-                    <td>{{ $zwemles->duurtijd }}</td>
-                    <td>{{ $zwemles->tijdstip }}</td>
-
-                    <td>{{ $zwemles->duurtijd }} minuten</td>
-                    <td>{{ \Carbon\Carbon::parse($zwemles->tijdstip)->format('Y-m-d H:i') }}</td>
-
-                    <td>
-                        <a href="{{ route('zwemlessen.show', $zwemles) }}"
-                            class="bg-cyan-400 px-2 py-2 rounded-lg ">Bekijk</a>
-                        <a href="{{ route('zwemlessen.edit', $zwemles) }}"
-                            class="bg-green-500 px-2 py-2 rounded-lg ">Bewerk</a>
-                        <form action="{{ route('zwemlessen.destroy', $zwemles) }}" method="POST"
-                            style="display: inline-block;">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="bg-red-600 px-2 py-1.5 rounded-lg "
-                                onclick="return confirm('Weet je zeker dat je deze zwemles wilt verwijderen?')">Verwijderen</button>
-                        </form>
-                    </td>
-                </tr>
-            @endforeach
-        </tbody>
-    </table> --}}
 </body>
 
 </html>
