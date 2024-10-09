@@ -34,7 +34,7 @@ class ZwemDocentController extends Controller
     }
 
     public function create()
-    { 
+    {
         return view('zwemdocenten.create');
     }
 
@@ -57,12 +57,15 @@ class ZwemDocentController extends Controller
 
     public function update(StoreZwemDocentRequest $request, Zwemles $zwemles)
     {
-        $zwemles->update($request->validated());
+        Feedback::create(array_merge(
+            $request->validated(),
+            ['aanmaakdatum' => now()->toDateString()]
+        )); 
 
         return redirect()->route('zwemlessen.index')->with('success', 'Zwemles succesvol geupdate!');
     }
     public function destroy(Zwemles $zwemles)
-    {      
+    {
         $zwemles->delete();
         return redirect()->route('zwemlessen.index')->with('success', 'Zwemles succesvol verwijderd!');
     }

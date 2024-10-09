@@ -14,6 +14,8 @@
 </head>
 
 <body class="overflow-x-hidden bg-gray-100">
+    @include('headerLoggedIn')
+
     <div class="">
         <nav class="flex bg-white text-gray-950 ml-16 absolute w-full rounded-b-xl z-50">
             <div class="px-5 xl:px-12  flex w-full items-center">
@@ -62,37 +64,7 @@
             @enderror
     </div>
     <div class="flex">
-        <aside class="bg-cyan-400 text-white w-64 h-screen p-4 overflow-y-auto relative">
-            <nav>
-                <ul class="space-y-2">
-                    <li class="opcion-con-desplegable">
-                        <div class="flex items-center justify-between p-2 hover:bg-cyan-300 cursor-pointer rounded-lg">
-                            <div class="flex items-center">
-                                <i class="fa-solid fa-person-swimming mr-2"></i>
-                                <a href="{{ route('zwemlessen.index') }}">Zwemlessen</a>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="opcion-con-desplegable">
-                        <div class="flex items-center justify-between p-2 hover:bg-cyan-300 cursor-pointer rounded-lg">
-                            <div class="flex items-center">
-                                <i class="fa-solid fa-person-chalkboard mr-2"></i>
-                                <a href="{{ route('zwemlessen.create') }}">Toevoegen les</a>
-                            </div>
-                        </div>
-                    </li>
-                    </li>
-                    <li class="opcion-con-desplegable">
-                        <div class="flex items-center justify-between p-2 hover:bg-cyan-300 cursor-pointer rounded-lg">
-                            <div class="flex items-center">
-                                <i class="fa-solid fa-children mr-2"></i>
-                                <a href="{{ route('leerlingen.index') }}">Mijn leerlingen</a>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-            </nav>
-        </aside>
+        @include('aside')
         <div class="min-h-screen w-full py-6 flex flex-col justify-center sm:py-8">
             <div class="relative py-3 sm:max-w-xl sm:mx-auto">
                 <div class="relative px-4 py-10 bg-white mx-8 md:mx-0 shadow rounded-3xl sm:p-10">
