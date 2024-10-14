@@ -57,10 +57,7 @@ class ZwemDocentController extends Controller
 
     public function update(StoreZwemDocentRequest $request, Zwemles $zwemles)
     {
-        Feedback::create(array_merge(
-            $request->validated(),
-            ['aanmaakdatum' => now()->toDateString()]
-        )); 
+        $zwemles->update($request->validated());
 
         return redirect()->route('zwemlessen.index')->with('success', 'Zwemles succesvol geupdate!');
     }

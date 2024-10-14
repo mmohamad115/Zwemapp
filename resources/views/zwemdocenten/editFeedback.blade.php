@@ -23,10 +23,6 @@
         </div>
     </div>
     <div class="flex">
-        @include('components.sidebar')
-
-    @include('headerLoggedIn')
-    <div class="flex">
         @include('aside')
 
         <div class="min-h-screen w-full py-6 flex flex-col justify-center sm:py-8">

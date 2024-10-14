@@ -24,10 +24,7 @@
             </div>
         </div>
     </div>
-    <div class="flex">
-        @include('components.sidebar')
 
-    @include('headerLoggedIn')
     <div class="flex">
         @include('aside')
 
