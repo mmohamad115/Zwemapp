@@ -15,16 +15,7 @@
 
 
 <body class="overflow-x-hidden bg-gray-100">
-
-    <div class="">
-        @include('components.navbar')
-
-        <div class="bg-white pr-4 pt-2 flex items-center justify-between h-20">
-            <div class="flex items-center space-x-4">
-            </div>
-        </div>
-    </div>
-
+    @include('headerLoggedIn')
     <div class="flex">
         @include('aside')
 
