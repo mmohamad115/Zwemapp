@@ -501,20 +501,14 @@
                         <span>Bekijk de tarieven</span>
                     </button>
                     <div class="mt-12 flex items-center">
-                        <span>Mijn Kind(eren)</span>
-                        <button class="ml-2 focus:outline-none">
-                            <svg class="h-5 w-5 fill-current" viewBox="0 0 256 512">
-                                <path d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9
-                                    0l-22.6-22.6c-9.4-9.4-9.4-24.6
-                                    0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3
-                                    103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1
-                                    34z"></path>
-                            </svg>
-                        </button>
+                        <span class="text-gray-600">Mijn Kind(eren)</span>
+                        <a class="ml-2 text-gray-600">
+                            <i class="fa-solid fa-angle-down"></i>
+                        </a>
                     </div>
                     @foreach ($leerlingen as $leerling)
                         <a
-                            class="mt-4 p-4 flex justify-between bg-gray-300 rounded-lg
+                            class="mt-4 p-4 flex justify-between bg-cyan-400 text-cyan-700 rounded-lg
                         font-semibold capitalize">
                             <div class="flex">
                                 <i class="fas fa-user-circle text-xl rounded-full"></i>
