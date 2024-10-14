@@ -83,38 +83,41 @@
                 </table>
             </div>
             <div class="w-full">
-                <div class="p-5 text-lg font-semibold text-left rtl:text-right text-gray-900 bg-cyan-400">
+                <div class="p-5 text-lg font-semibold text-left rtl:text-right text-gray-900">
                     <a>Leerling Feedback</a>
                 </div>
             </div>
-            @foreach ($leerling->feedback as $feedback)
-                <div class="bg-white w-2/6 m-5 rounded-3xl p-5 shadow-xl">
-                    <div
-                        class="relative flex items-center gap-4 pt-0 pb-8 mx-0 mt-4 overflow-hidden text-gray-700 bg-transparent shadow-none rounded-xl bg-clip-border">
-                        <div class="flex w-full flex-col gap-0.5">
-                            <div class="flex items-center justify-between">
-                                <h5
-                                    class="block font-sans text-xl antialiased font-semibold leading-snug tracking-normal text-cyan-400">
-                                    {{ $feedback->zwemDocent->voornaam }}
-                                    {{ $feedback->zwemDocent->achternaam }}
-                                </h5>
-                                <div class="flex items-center gap-0.5">
-                                    © {{ $feedback->aanmaakdatum }}
+            <div class="flex flex-row flex-wrap w-auto">
+                @foreach ($leerling->feedback as $feedback)
+                    <div class="bg-white m-5 rounded-3xl p-5 shadow-xl w-2/6">
+                        <div
+                            class="relative flex items-center gap-4 pt-0 pb-8 mx-0 mt-4 overflow-hidden text-gray-700 bg-transparent shadow-none rounded-xl bg-clip-border">
+                            <div class="flex w-full flex-col gap-0.5">
+                                <div class="flex items-center justify-between">
+                                    <h5
+                                        class="block font-sans text-xl antialiased font-semibold leading-snug tracking-normal text-cyan-400">
+                                        {{ $feedback->zwemDocent->voornaam }}
+                                        {{ $feedback->zwemDocent->achternaam }}
+                                    </h5>
+                                    <div class="flex items-center gap-0.5">
+                                        © {{ $feedback->aanmaakdatum }}
+                                    </div>
                                 </div>
+                                <p
+                                    class="block font-sans text-base antialiased font-light leading-relaxed text-blue-gray-900">
+                                    Heeft feedback achtergelaten
+                                </p>
                             </div>
-                            <p
-                                class="block font-sans text-base antialiased font-light leading-relaxed text-blue-gray-900">
-                                Heeft feedback achtergelaten
+                        </div>
+                        <div class="p-0 mb-6">
+                            <p class="block font-sans text-base antialiased font-light leading-relaxed text-inherit">
+                                {{ $feedback->content }}
                             </p>
                         </div>
                     </div>
-                    <div class="p-0 mb-6">
-                        <p class="block font-sans text-base antialiased font-light leading-relaxed text-inherit">
-                            {{ $feedback->content }}
-                        </p>
-                    </div>
-                </div>
-            @endforeach
+                @endforeach
+            </div>
+
         </div>
     </div>
 </body>

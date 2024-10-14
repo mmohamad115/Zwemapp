@@ -1,4 +1,4 @@
-<aside class="bg-cyan-400 text-white w-64 min-h-screen p-4 overflow-y-auto relative">
+<aside class="bg-cyan-400 text-gray-100 w-64 min-h-screen p-4 overflow-y-auto relative">
     <nav>
         <ul class="space-y-2">
             <li class="opcion-con-desplegable">
