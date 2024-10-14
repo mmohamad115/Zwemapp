@@ -15,6 +15,54 @@
 
 <body class="overflow-x-hidden bg-gray-100">
     @include('headerLoggedIn')
+
+    <div class="">
+        <nav class="flex bg-white text-gray-950 ml-16 absolute w-full rounded-b-xl z-50">
+            <div class="px-5 xl:px-12  flex w-full items-center">
+                <a class="text-3xl font-bold font-heading">
+                    <img class="h-20 w-20" src="{{ asset('photos/SSClogoText.png') }}" alt="logo">
+                    {{-- SplashZone Swim Center --}}
+                </a>
+                <ul class="flex px-4 mx-auto font-semibold font-heading space-x-12">
+                    <li><a class="hover:text-cyan-400" href="{{ route('profile.edit') }}">Dashboard</a></li>
+                    <li><a class="hover:text-cyan-400" href="#">Tijden</a></li>
+                    <li><a class="hover:text-cyan-400" href="#">Tarieven</a></li>
+                    <li><a class="hover:text-cyan-400" href="#">Contact Us</a></li>
+                </ul>
+                <div class="items-center space-x-5 items-center mr-14">
+                    <div class="items-center space-x-5 items-center flex">
+                        <div class="flex items-center space-x-2">
+                            <span class="text-gray-900">{{ auth()->user()->name }}</span>
+                            <i class="fas fa-user-circle text-gray-900 text-2xl"></i>
+                        </div>
+                        <form method="POST" action="{{ route('logout') }}" class=" items-center ">
+                            @csrf
+                            <button type="submit" class="bg-red-600 text-white hover:bg-red-700 px-2 py-1 rounded-lg">
+                                <i class="fas fa-sign-out-alt text-xs"></i>
+                                Logout
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <div class="bg-white pr-4 pt-2 flex items-center justify-between h-20">
+            <div class="flex items-center space-x-4">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="leerling_id">Leerling</label>
+            <select name="leerling_id" id="leerling_id" class="form-control" required>
+                <option value="">Select a leerling</option>
+                @foreach ($leerlingen as $leerling)
+                    <option value="{{ $leerling->leerling_id }}">{{ $leerling->voornaam }} {{ $leerling->achternaam }}
+                    </option>
+                @endforeach
+            </select>
+            @error('leerling_id')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
+    </div>
     <div class="flex">
         @include('aside')
         <div class="min-h-screen w-full py-6 flex flex-col justify-center sm:py-8">
@@ -26,10 +74,19 @@
                                 class="h-14 w-14 bg-cyan-400 rounded-full flex flex-shrink-0 justify-center items-center text-cyan-600 text-2xl font-mono">
                                 i</div>
                             <div class="block pl-2 font-semibold text-xl self-start text-gray-700">
-                                <h2 class="leading-relaxed">Maak een zwemles aan</h2>
-                                <p class="text-sm text-gray-500 font-normal leading-relaxed">hier kan je een zwemles
-                                    aanmaken,
+                                <h2 class="leading-relaxed">Geef een feedback</h2>
+                                <p class="text-sm text-gray-500 font-normal leading-relaxed">hier kan je een feedback
+                                    achterlaten,
                                     vul alle velden in.</p>
+                                @if ($errors->any())
+                                    <div class="alert alert-danger">
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endif
                             </div>
                         </div>
                         <form action="{{ route('feedback.store') }}" method="POST">
