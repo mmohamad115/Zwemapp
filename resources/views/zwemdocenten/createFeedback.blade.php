@@ -34,6 +34,7 @@
                         </div>
                         <form action="{{ route('feedback.store') }}" method="POST">
                             @csrf
+                            <input type="hidden" name="leerling_id" value={{ $leerling_id }}>
                             <div class="divide-y divide-gray-200">
                                 <div class="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
                                     <div class="flex flex-col">

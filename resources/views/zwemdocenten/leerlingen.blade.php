@@ -74,7 +74,7 @@
                                                 style="display:inline;">
                                                 @csrf
                                                 @method('DELETE')
-                                                <a href="{{ route('feedback.edit', $feedback) }}"
+                                                <a href="{{ route('feedback.edit', [$feedback, 'leerling_id' => $leerling->leerling_id]) }}"
                                                     class="px-2 py-1 bg-green-500 rounded-lg">Bewerk
                                                     Feedback</a>
 
@@ -83,7 +83,7 @@
                                                     Feedback</button>
                                             </form>
                                         @endforeach
-                                        <a href="{{ route('feedback.create', ['leerling_id' => $leerling->id]) }}"
+                                        <a href="{{ route('feedback.create', ['leerling_id' => $leerling->leerling_id]) }}"
                                             class="px-2 py-1 bg-cyan-600 rounded-lg">Voeg Feedback Toe</a>
                                     </td>
                                     <td>
