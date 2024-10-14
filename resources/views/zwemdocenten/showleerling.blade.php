@@ -50,12 +50,13 @@
                                 <th scope="col" class="px-6 py-3">
                                     Diploma
                                 </th>
-                                {{-- <th scope="col" class="px-6 py-3">
-                                    Feedback
-                                </th> --}}
+                                <th scope="col" class="px-6 py-3">
+                                    Gekoppelde zwemles(sen)
+                                </th>
                                 <th scope="col" class="px-6 py-3">
                                     Acties
                                 </th>
+                                
                             </tr>
                         </thead>
                         <tbody>
@@ -71,6 +72,17 @@
                                 </td>
                                 <td class="px-6 py-4">
                                     {{ $leerling->diploma }}
+                                </td>
+                                <td class="px-6 py-4">
+                                    <ul>
+                                        @if($leerling->zwemlessen->isEmpty())
+                                            <li>Geen zwemlessen gekoppeld.</li>
+                                        @else
+                                            @foreach ($leerling->zwemlessen as $zwemles)
+                                                <li>{{ $zwemles->naam }}</li>
+                                            @endforeach
+                                        @endif
+                                    </ul>
                                 </td>
                                 <td>
                                     <a href="{{ route('leerlingen.index') }}"
@@ -121,6 +133,7 @@
                     </div>
                 </div>
             @endforeach
+            
         </div>
     </div>
 </body>

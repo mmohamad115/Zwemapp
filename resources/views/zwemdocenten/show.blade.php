@@ -49,6 +49,9 @@
                                     Tijdstip
                                 </th>
                                 <th scope="col" class="px-6 py-3">
+                                    Gekoppelde leerling(en)
+                                </th>
+                                <th scope="col" class="px-6 py-3">
                                     Acties
                                 </th>
                             </tr>
@@ -67,6 +70,15 @@
                                 <td class="px-6 py-4">
                                     {{ $zwemles->tijdstip }}
                                 </td>
+
+                                <td class="px-6 py-4">
+                                    <ul>
+                                        @foreach ($zwemles->groepen as $leerling)
+                                            <li>{{ $leerling->voornaam }} {{ $leerling->achternaam }}</li>
+                                        @endforeach
+                                    </ul>
+                                </td>
+
                                 <td>
                                     <a href="{{ route('zwemlessen.index') }}"
                                         class="bg-cyan-600 px-2 text-white py-2 rounded-lg ">Terug</a>
@@ -81,10 +93,10 @@
                                     </form>
                                 </td>
                             </tr>
-
                         </tbody>
                     </div>
                 </table>
+
             </div>
         </div>
     </div>

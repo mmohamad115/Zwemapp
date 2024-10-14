@@ -81,6 +81,16 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="flex flex-col">
+                                        <label for="leerlingen" class="leading-loose">Leerlingen</label>
+                                        <select name="leerlingen[]" multiple
+                                            class="px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600">
+                                            @foreach ($leerlingen as $leerling)
+                                                <option value="{{ $leerling->leerling_id }}">{{ $leerling->voornaam }}
+                                                    {{ $leerling->achternaam }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
                                 </div>
                                 <div class="pt-4 flex items-center space-x-4">
                                     <button type="submit"
