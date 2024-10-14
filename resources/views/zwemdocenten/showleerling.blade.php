@@ -12,24 +12,25 @@
     <script src="https://kit.fontawesome.com/db1f6bf93f.js" crossorigin="anonymous"></script>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-    <p><strong>Voornaam:</strong> {{ $leerling->voornaam }}</p>
-    <p><strong>Achternaam:</strong> {{ $leerling->achternaam }}</p>
-    <p><strong>Geboortedatum:</strong> {{ $leerling->geboortedatum }}</p>
-    <p><strong>Diploma:</strong> {{ $leerling->diploma }}</p>
 
-    <p><strong>Voortgang:</strong> {{ $leerling->lessons_completed }} / {{ $totalLessons }}</p>
-
-    <p><strong>Feedback:</strong></p>
-    <ul>
-        @foreach ($leerling->feedback as $feedback)
-            <li>{{ $feedback->content }} ({{ $feedback->aanmaakdatum }})</li>
-        @endforeach
-    </ul>
 
 <body class="overflow-x-hidden bg-gray-100">
+
+    <div class="">
+        @include('components.navbar')
+
+        <div class="bg-white pr-4 pt-2 flex items-center justify-between h-20">
+            <div class="flex items-center space-x-4">
+            </div>
+        </div>
+    </div>
+    <div class="flex">
+        @include('components.sidebar')
+
     @include('headerLoggedIn')
     <div class="flex">
         @include('aside')
+
         <div class="w-full">
             <div class="flex">
                 <table class="m-10 w-full shadow-xl rounded-xl text-sm text-left rtl:text-right text-white">
