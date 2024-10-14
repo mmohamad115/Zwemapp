@@ -22,6 +22,11 @@ class Zwemles extends Model
 
     public function groepen()
     {
-        return $this->belongsToMany(Groep::class, 'inschrijvingen', 'zwemles_id', 'groep_id');
+        return $this->belongsToMany(Leerling::class, 'inschrijvingen', 'zwemles_id', 'leerling_id');
+    }
+
+    public function leerlingen()
+    {
+        return $this->belongsToMany(Leerling::class, 'inschrijvingen', 'zwemles_id', 'leerling_id');
     }
 }

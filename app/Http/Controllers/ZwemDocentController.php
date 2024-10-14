@@ -27,7 +27,6 @@ class ZwemDocentController extends Controller
 
         $zwemdocent = Zwem_Docent::where('user_id', $user->id)->first();
 
-        // Get zwemlessen connected to the logged-in zwemdocent
         $zwemlessen = Zwemles::all();
 
         return view('zwemdocenten.index', compact(['zwemlessen', 'zwemdocent']));
@@ -35,12 +34,17 @@ class ZwemDocentController extends Controller
 
     public function create()
     {
-        return view('zwemdocenten.create');
+        $leerlingen = Leerling::all();
+        return view('zwemdocenten.create', compact('leerlingen'));
     }
 
     public function store(StoreZwemDocentRequest $request)
     {
-        Zwemles::create($request->validated());
+        $zwemles = Zwemles::create($request->validated());
+
+        if ($request->has('leerlingen')) {
+            $zwemles->groepen()->attach($request->input('leerlingen'));
+        }
 
         return redirect()->route('zwemlessen.index')->with('success', 'Zwemles succesvol aangemaakt!');
     }
@@ -52,12 +56,19 @@ class ZwemDocentController extends Controller
 
     public function edit(Zwemles $zwemles)
     {
-        return view('zwemdocenten.edit', compact('zwemles'));
+        $leerlingen = Leerling::all();
+        return view('zwemdocenten.edit', compact('zwemles', 'leerlingen'));
     }
 
     public function update(StoreZwemDocentRequest $request, Zwemles $zwemles)
     {
         $zwemles->update($request->validated());
+
+        if ($request->has('leerlingen')) {
+            $zwemles->groepen()->sync($request->input('leerlingen'));
+        } else {
+            $zwemles->groepen()->detach();
+        }
 
         return redirect()->route('zwemlessen.index')->with('success', 'Zwemles succesvol geupdate!');
     }
@@ -80,7 +91,7 @@ class ZwemDocentController extends Controller
         Feedback::create(array_merge(
             $request->validated(),
             ['aanmaakdatum' => now()->toDateString()]
-        )); 
+        ));
 
         return redirect()->route('leerlingen.index')->with('success', 'Feedback succesvol aangemaakt!');
     }
