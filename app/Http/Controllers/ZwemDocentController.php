@@ -79,11 +79,11 @@ class ZwemDocentController extends Controller
     }
 
     //Feedback pagina
-    public function feedbackCreate()
+    public function feedbackCreate(int $leerling_id)
     {
         $zwemDocenten = Zwem_Docent::all();
         $leerlingen = Leerling::all();
-        return view('zwemdocenten.createFeedback', compact('zwemDocenten', 'leerlingen'));
+        return view('zwemdocenten.createFeedback', compact('zwemDocenten', 'leerlingen', 'leerling_id'));
     }
 
     public function storeFeedback(StoreFeedbackRequest $request)
@@ -96,13 +96,14 @@ class ZwemDocentController extends Controller
         return redirect()->route('leerlingen.index')->with('success', 'Feedback succesvol aangemaakt!');
     }
 
-    public function editFeedback(Feedback $feedback)
+    public function editFeedback(Feedback $feedback, int $leerling_id)
     {
-        return view('zwemdocenten.editFeedback', compact('feedback'));
+        return view('zwemdocenten.editFeedback', compact('feedback', 'leerling_id'));
     }
 
     public function updateFeedback(StoreFeedbackRequest $request, Feedback $feedback)
     {
+
         $feedback->update($request->validated());
 
         return redirect()->route('leerlingen.index')->with('success', 'Feedback succesvol geupdate!');

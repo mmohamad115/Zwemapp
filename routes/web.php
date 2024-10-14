@@ -46,11 +46,11 @@ Route::get('/leerlingen/{leerling}', [ZwemDocentController::class, 'showLeerling
 Route::delete('/leerlingen/{leerling}', [ZwemDocentController::class, 'destroyLeerling'])->name('leerlingen.destroy');
 
 Route::post('/feedback', [ZwemDocentController::class, 'storeFeedback'])->name('feedback.store');
-Route::get('/feedback/create', [ZwemDocentController::class, 'feedbackCreate'])->name('feedback.create');
+Route::get('/feedback/create/{leerling_id}', [ZwemDocentController::class, 'feedbackCreate'])->name('feedback.create');
 Route::put('/feedback/{feedback}', [ZwemDocentController::class, 'updateFeedback'])->name('feedback.update');
 Route::delete('/feedback/{feedback}', [ZwemDocentController::class, 'destroyFeedback'])->name('feedback.destroy');
 
-Route::get('/feedback/{feedback}/edit', [ZwemDocentController::class, 'editFeedback'])->name('feedback.edit');
+Route::get('/feedback/{feedback}/{leerling_id}/edit', [ZwemDocentController::class, 'editFeedback'])->name('feedback.edit');
 
 Route::put('/leerlingen/{leerling}', [ZwemDocentController::class, 'updateLeerling'])->name('leerlingen.update');
 

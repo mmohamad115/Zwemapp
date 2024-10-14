@@ -6,10 +6,30 @@
                 {{-- SplashZone Swim Center --}}
             </a>
             <ul class="hidden md:flex px-4 mx-auto font-semibold font-heading space-x-12">
-                <li><a class="hover:text-cyan-400" href="#">Home</a></li>
-                <li><a class="hover:text-cyan-400" href="#">Tijden</a></li>
-                <li><a class="hover:text-cyan-400" href="#">Tarieven</a></li>
-                <li><a class="hover:text-cyan-400" href="#">Contact Us</a></li>
+                <li class="relative group">
+                    <a href="{{ route('home') }}" class="hover:text-cyan-400 hover:cursor-pointer">Home</a>
+                    <div
+                        class="absolute left-0 right-0 h-0.5 bg-cyan-400 scale-x-0 transition-transform duration-300 origin-center group-hover:scale-x-100">
+                    </div>
+                </li>
+                <li class="relative group">
+                    <a class="hover:text-cyan-400 hover:cursor-pointer">Tijden</a>
+                    <div
+                        class="absolute left-0 right-0 h-0.5 bg-cyan-400 scale-x-0 transition-transform duration-300 origin-center group-hover:scale-x-100">
+                    </div>
+                </li>
+                <li class="relative group">
+                    <a class="hover:text-cyan-400 hover:cursor-pointer">Tarieven</a>
+                    <div
+                        class="absolute left-0 right-0 h-0.5 bg-cyan-400 scale-x-0 transition-transform duration-300 origin-center group-hover:scale-x-100">
+                    </div>
+                </li>
+                <li class="relative group">
+                    <a class="hover:text-cyan-400 hover:cursor-pointer">Contact Us</a>
+                    <div
+                        class="absolute left-0 right-0 h-0.5 bg-cyan-400 scale-x-0 transition-transform duration-300 origin-center group-hover:scale-x-100">
+                    </div>
+                </li>
             </ul>
             <div class="hidden xl:flex items-center space-x-5 items-center">
                 <div class="hidden xl:flex items-center space-x-5 items-center">
@@ -19,16 +39,34 @@
                             <nav>
                                 @auth
                                     @if (Auth::user()->role === 'ouder')
-                                        <a href="{{ route('ouders.index') }}" class="hover:text-cyan-400">
-                                            Dashboard ouder
-                                        </a>
+                                        <li class="relative group">
+                                            <a class="hover:text-cyan-400 hover:cursor-pointer"
+                                                href="{{ route('ouders.index') }}">
+                                                Dashboard ouder
+                                            </a>
+                                            <div
+                                                class="absolute left-0 right-0 h-0.5 bg-cyan-400 scale-x-0 transition-transform duration-300 origin-center group-hover:scale-x-100">
+                                            </div>
+                                        </li>
                                     @elseif (Auth::user()->role === 'zwem_docent')
-                                        <a href="{{ route('profile.edit') }}" class="hover:text-cyan-400">
-                                            Dashboard zwemdocent
-                                        </a>
+                                        <li class="relative group">
+                                            <a class="hover:text-cyan-400 hover:cursor-pointer"
+                                                href="{{ route('profile.edit') }}">
+                                                Dashboard zwemdocent
+                                            </a>
+                                            <div
+                                                class="absolute left-0 right-0 h-0.5 bg-cyan-400 scale-x-0 transition-transform duration-300 origin-center group-hover:scale-x-100">
+                                            </div>
+                                        </li>
                                     @endif
                                 @else
-                                    <a class="hover:text-cyan-400" href="{{ route('login') }}">Login</a>
+                                    <li class="relative group">
+                                        <a class="hover:text-cyan-400 hover:cursor-pointer"
+                                            href="{{ route('login') }}">Login</a>
+                                        <div
+                                            class="absolute left-0 right-0 h-0.5 bg-cyan-400 scale-x-0 transition-transform duration-300 origin-center group-hover:scale-x-100">
+                                        </div>
+                                    </li>
                                 @endauth
                             </nav>
                         @endif

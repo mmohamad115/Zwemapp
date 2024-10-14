@@ -14,14 +14,7 @@
 </head>
 
 <body class="overflow-x-hidden bg-gray-100">
-
-    <div class="">
-        @include('components.navbar')
-        <div class="bg-white pr-4 pt-2 flex items-center justify-between h-20">
-            <div class="flex items-center space-x-4">
-            </div>
-        </div>
-    </div>
+    @include('headerLoggedIn')
     <div class="flex">
         @include('aside')
 
@@ -43,6 +36,7 @@
                         <form action="{{ route('feedback.update', $feedback) }}" method="POST">
                             @csrf
                             @method('PUT')
+                            <input type="hidden" name="leerling_id" value={{ $leerling_id }}>
                             <div class="divide-y divide-gray-200">
                                 <div class="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
                                     <div class="flex flex-col">
