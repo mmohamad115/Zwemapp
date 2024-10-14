@@ -1,7 +1,7 @@
     <nav class="flex bg-white text-gray-950 ml-16 absolute w-11/12 rounded-b-xl z-50">
         <div class="px-5 xl:px-12  flex w-full items-center">
             <a class="text-3xl font-bold font-heading">
-                <img class="h-20 w-20" src="photos/SSClogoText.png" alt="logo">
+                <img class="h-20 w-20" src="photos/SSClogo.png" alt="logo">
                 {{-- SplashZone Swim Center --}}
             </a>
             <!-- Nav Links -->

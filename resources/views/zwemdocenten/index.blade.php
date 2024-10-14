@@ -14,6 +14,7 @@
 </head>
 
 <body class="overflow-x-hidden bg-gray-100">
+
     <div class="">
         @include('components.navbar')
         <div class="bg-white pr-4 pt-2 flex items-center justify-between h-20">
@@ -23,6 +24,11 @@
     </div>
     <div class="flex">
         @include('components.sidebar')
+
+    @include('headerLoggedIn')
+    <div class="flex">
+        @include('aside')
+
         <div class="w-full">
             <div class="flex">
                 <table class="m-10 w-full shadow-md rounded-xl text-sm text-left rtl:text-right text-white">
@@ -56,9 +62,9 @@
                         <tbody>
                             @foreach ($zwemlessen as $zwemles)
                                 <tr class="bg-cyan-400 border-b rounded-b-xl">
-                                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                                    <td class="px-6 py-4">
                                         {{ $zwemles->naam }}
-                                    </th>
+                                    </td>
                                     <td class="px-6 py-4">
                                         {{ $zwemles->beschrijving }}
                                     </td>

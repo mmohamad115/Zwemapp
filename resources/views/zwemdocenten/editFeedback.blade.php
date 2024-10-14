@@ -14,6 +14,7 @@
 </head>
 
 <body class="overflow-x-hidden bg-gray-100">
+
     <div class="">
         @include('components.navbar')
         <div class="bg-white pr-4 pt-2 flex items-center justify-between h-20">
@@ -23,6 +24,11 @@
     </div>
     <div class="flex">
         @include('components.sidebar')
+
+    @include('headerLoggedIn')
+    <div class="flex">
+        @include('aside')
+
         <div class="min-h-screen w-full py-6 flex flex-col justify-center sm:py-8">
             <div class="relative py-3 sm:max-w-xl sm:mx-auto">
                 <div class="relative px-4 py-10 bg-white mx-8 md:mx-0 shadow rounded-3xl sm:p-10">

@@ -14,12 +14,15 @@
 </head>
 
 <body class="overflow-x-hidden bg-gray-100">
+    @include('headerLoggedIn')
+
     <div class="">
         @include('components.navbar')
         <div class="bg-white pr-4 pt-2 flex items-center justify-between h-20">
             <div class="flex items-center space-x-4">
             </div>
         </div>
+
         <div class="flex">
             @include('components.sidebar')
             <div class="min-h-screen w-full py-6 flex flex-col justify-center sm:py-8">
@@ -36,6 +39,45 @@
                                         aanmaken,
                                         vul alle velden in.</p>
                                 </div>
+
+        <div class="form-group">
+            <label for="leerling_id">Leerling</label>
+            <select name="leerling_id" id="leerling_id" class="form-control" required>
+                <option value="">Select a leerling</option>
+                @foreach ($leerlingen as $leerling)
+                    <option value="{{ $leerling->leerling_id }}">{{ $leerling->voornaam }} {{ $leerling->achternaam }}
+                    </option>
+                @endforeach
+            </select>
+            @error('leerling_id')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
+    </div>
+    <div class="flex">
+        @include('aside')
+        <div class="min-h-screen w-full py-6 flex flex-col justify-center sm:py-8">
+            <div class="relative py-3 sm:max-w-xl sm:mx-auto">
+                <div class="relative px-4 py-10 bg-white mx-8 md:mx-0 shadow rounded-3xl sm:p-10">
+                    <div class="max-w-md mx-auto">
+                        <div class="flex items-center space-x-5">
+                            <div
+                                class="h-14 w-14 bg-cyan-400 rounded-full flex flex-shrink-0 justify-center items-center text-cyan-600 text-2xl font-mono">
+                                i</div>
+                            <div class="block pl-2 font-semibold text-xl self-start text-gray-700">
+                                <h2 class="leading-relaxed">Geef een feedback</h2>
+                                <p class="text-sm text-gray-500 font-normal leading-relaxed">hier kan je een feedback
+                                    achterlaten,
+                                    vul alle velden in.</p>
+                                @if ($errors->any())
+                                    <div class="alert alert-danger">
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endif
+
                             </div>
                             <form action="{{ route('feedback.store') }}" method="POST">
                                 @csrf
