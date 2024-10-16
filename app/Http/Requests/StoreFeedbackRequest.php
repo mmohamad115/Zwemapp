@@ -23,8 +23,8 @@ class StoreFeedbackRequest extends FormRequest
     {
         return [
             'content' => 'required|string',
-           
             'leerling_id' => 'required|exists:leerlingen,leerling_id',
+            'zwem_docent_id' => 'required|exists:zwem_docenten,zwem_docent_id',
         ];
     }
 }
