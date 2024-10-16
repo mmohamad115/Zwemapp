@@ -118,22 +118,12 @@
                                 </p>
                             </div>
                         </div>
-                        <div class="p-0 mb-6">
-                            <p class="block font-sans text-base antialiased font-light leading-relaxed text-inherit">
-                                {{ $feedback->content }}
-                            </p>
-                        </div>
-                    </div>
-
                     <div class="p-0 mb-6">
                         <p class="block font-sans text-base antialiased font-light leading-relaxed text-inherit">
                             {{ $feedback->content }}
                         </p>
                     </div>
                 </div>
-            @endforeach
-            
-
                 @endforeach
             </div>
 
