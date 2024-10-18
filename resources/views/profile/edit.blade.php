@@ -29,10 +29,10 @@
                 <div class="flex">
                     <div
                         class="mr-6 w-1/2 mt-8 py-2 flex-shrink-0 flex flex-col
-                        bg-gray-700 rounded-lg">
+                        bg-gradient-to-tr from-cyan-600 to-cyan-800 rounded-lg">
                         <h3
                             class="flex items-center pt-1 pb-1 px-8 text-lg font-semibold
-                            capitalize dark:text-gray-300">
+                            capitalize text-gray-200">
                             <span>Tips en les ideeën voor de docent</span>
                             <button class="ml-2">
                                 <svg class="h-5 w-5 fill-current" viewBox="0 0 256 512">
@@ -110,7 +110,7 @@
                                                     <span
                                                         class="text-cyan-500
                                                         font-semibold">
-                                                        Charles L.
+                                                        Alice G.
                                                     </span>
                                                 </span>
                                             </div>

@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Auth;
 class ZwemDocentController extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
     {
         $user = auth()->user();
 
@@ -28,6 +28,12 @@ class ZwemDocentController extends Controller
         $zwemdocent = Zwem_Docent::where('user_id', $user->id)->first();
 
         $zwemlessen = Zwemles::all();
+
+        $search = $request->input('search');
+
+        $zwemlessen = Zwemles::when($search, function ($query, $search) {
+            return $query->where('naam', 'LIKE', "%{$search}%");
+        })->get();
 
         return view('zwemdocenten.index', compact(['zwemlessen', 'zwemdocent']));
     }
@@ -116,10 +122,17 @@ class ZwemDocentController extends Controller
     }
 
     //Leerlingen pagina
-    public function leerlingen()
+    public function leerlingen(Request $request)
     {
         $leerlingen = Leerling::all();
         $totalLessons = ZwemLes::count();
+
+        $search = $request->input('search');
+
+        $leerlingen = Leerling::when($search, function ($query, $search) {
+            return $query->where('voornaam', 'LIKE', "%{$search}%")
+                ->orWhere('achternaam', 'LIKE', "%{$search}%");
+        })->get();
 
         return view('zwemdocenten.leerlingen', compact('leerlingen', 'totalLessons'));
     }
