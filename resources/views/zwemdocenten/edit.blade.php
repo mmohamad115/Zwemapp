@@ -81,15 +81,16 @@
                                     </div>
                                     <div class="flex flex-col">
                                         <label for="leerlingen" class="leading-loose">Leerlingen</label>
-                                        <select name="leerlingen[]" multiple
-                                            class="px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600">
+                                        <div class="space-y-2">
                                             @foreach ($leerlingen as $leerling)
-                                                <option value="{{ $leerling->leerling_id }}"
-                                                    {{ in_array($leerling->leerling_id, $zwemles->groepen->pluck('leerling_id')->toArray()) ? 'selected' : '' }}>
-                                                    {{ $leerling->voornaam }} {{ $leerling->achternaam }}
-                                                </option>
+                                                <div class="flex items-center">
+                                                    <input type="checkbox" name="leerlingen[]" value="{{ $leerling->leerling_id }}"
+                                                        {{ in_array($leerling->leerling_id, $zwemles->groepen->pluck('leerling_id')->toArray()) ? 'checked' : '' }} 
+                                                        class="mr-2">
+                                                    <label>{{ $leerling->voornaam }} {{ $leerling->achternaam }}</label>
+                                                </div>
                                             @endforeach
-                                        </select>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="pt-4 flex items-center space-x-4">

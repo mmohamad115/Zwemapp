@@ -14,9 +14,9 @@ class Feedback extends Model
 
     protected $fillable = [
         'content',
-        'aanmaakdatum',
         'leerling_id',
         'zwem_docent_id',
+        'aanmaakdatum',
     ];
 
     protected $primaryKey = 'feedback_id';
