@@ -104,7 +104,9 @@ class ZwemDocentController extends Controller
 
     public function editFeedback(Feedback $feedback, int $leerling_id)
     {
-        return view('zwemdocenten.editFeedback', compact('feedback', 'leerling_id'));
+        $zwemdocent = Zwem_Docent::where('user_id', Auth::id())->first();
+
+        return view('zwemdocenten.editFeedback', compact('feedback', 'leerling_id', 'zwemdocent'));
     }
 
     public function updateFeedback(StoreFeedbackRequest $request, Feedback $feedback)

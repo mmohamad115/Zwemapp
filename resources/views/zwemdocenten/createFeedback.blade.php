@@ -35,7 +35,7 @@
                         <form action="{{ route('feedback.store') }}" method="POST">
                             @csrf
                             <input type="hidden" name="leerling_id" value={{ $leerling_id }}>
-                            <input type="hidden" name="zwem_docent_id   " value={{ $zwemdocent->zwem_docent_id }}>
+                            <input type="hidden" name="zwem_docent_id" value={{ $zwemdocent->zwem_docent_id }}>
                             
                             <!-- Display all validation errors -->
                             @if ($errors->any())

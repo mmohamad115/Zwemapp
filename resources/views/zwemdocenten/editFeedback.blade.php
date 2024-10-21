@@ -37,6 +37,18 @@
                             @csrf
                             @method('PUT')
                             <input type="hidden" name="leerling_id" value={{ $leerling_id }}>
+                            <input type="hidden" name="zwem_docent_id" value={{ $zwemdocent->zwem_docent_id }}>
+                            @if ($errors->any())
+                            <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                                <strong class="font-bold">Whoops!</strong>
+                                <span class="block sm:inline">There were some problems with your input.</span>
+                                <ul class="mt-3 list-disc list-inside text-sm text-red-600">
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
                             <div class="divide-y divide-gray-200">
                                 <div class="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
                                     <div class="flex flex-col">
