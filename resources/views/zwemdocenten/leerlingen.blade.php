@@ -74,6 +74,13 @@
                                         <i class="fa-solid fa-angle-right"></i>
                                     </a>
                                 @endforeach
+                                @foreach ($leerling->feedback as $feedback)
+                                    <a href="{{ route('feedback.create', ['leerling_id' => $leerling->leerling_id]) }}"
+                                        class="flex items-center gap-1 font-sans text-xs antialiased font-normal text-gray-700">
+                                        Maak Feedback
+                                        <i class="fa-solid fa-angle-right"></i>
+                                    </a>
+                                @endforeach
                             </div>
                         </div>
                     @endforeach
