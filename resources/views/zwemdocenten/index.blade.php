@@ -19,70 +19,56 @@
         @include('aside')
 
         <div class="w-full">
-            <div class="flex">
-                <table class="m-10 w-full shadow-md rounded-xl text-sm text-left rtl:text-right text-white">
-                    <div class="bg-blue-400">
-                        <caption
-                            class="p-5 text-lg font-semibold text-left rtl:text-right text-gray-900 rounded-t-xl bg-cyan-400">
-                            <a>Zwemlessen</a>
-                            @if (session('success'))
-                                <div class="alert alert-success text-green-500 text-sm">{{ session('success') }}</div>
-                            @endif
-                        </caption>
-                        <thead class="text-xs text-gray-100 uppercase bg-cyan-600">
-                            <tr>
-                                <th scope="col" class="px-6 py-3">
-                                    Naam
-                                </th>
-                                <th scope="col" class="px-6 py-3">
-                                    Beschrijving
-                                </th>
-                                <th scope="col" class="px-6 py-3">
-                                    Duurtijd
-                                </th>
-                                <th scope="col" class="px-6 py-3">
-                                    Tijdstip
-                                </th>
-                                <th scope="col" class="px-6 py-3">
-                                    Acties
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($zwemlessen as $zwemles)
-                                <tr class="bg-cyan-400 border-b rounded-b-xl">
-                                    <td class="px-6 py-4">
-                                        {{ $zwemles->naam }}
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        {{ $zwemles->beschrijving }}
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        {{ $zwemles->duurtijd }}
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        {{ $zwemles->tijdstip }}
-                                    </td>
-                                    <td>
-                                        <a href="{{ route('zwemlessen.show', $zwemles) }}"
-                                            class="bg-cyan-600 px-2 text-white py-2 rounded-lg ">Bekijk</a>
-                                        <a href="{{ route('zwemlessen.edit', $zwemles) }}"
-                                            class="bg-green-500 px-2 text-white py-2 rounded-lg ">Bewerk</a>
-                                        <form action="{{ route('zwemlessen.destroy', $zwemles) }}" method="POST"
-                                            style="display: inline-block;">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit"
-                                                class="bg-red-600 px-2 text-white py-1.5 rounded-lg mr-1"
-                                                onclick="return confirm('Weet je zeker dat je deze zwemles wilt verwijderen?')">Verwijder</button>
-                                        </form>
-                                    </td>
-                                </tr>
-                            @endforeach
+            <div class=" bg-gray-100 flex justify-center items-center">
+                <div class="container mx-auto rounded-lg px-14 py-8">
+                    <form method="GET" action="{{ route('zwemlessen.index') }}">
+                        <h1 class="text-center font-bold text-gray-700 my-6 text-4xl">Zwemlessen</h1>
+                        <div class="sm:flex items-center bg-white rounded-lg overflow-hidden px-2 py-1 justify-between">
+                            <input
+                                class="text-base text-gray-400 flex-grow outline-none border-none focus-none px-2 focus:ring-0 focus:ring-transparent"
+                                type="text" name="search" placeholder="Zoeken naar zwemlessen"
+                                value="{{ request('search') }}" />
+                            <div class="ms:flex items-center px-2 rounded-lg space-x-4 mx-auto">
+                                <button
+                                    class="bg-cyan-600 text-white text-base rounded-lg px-4 py-2 font-sans text-xs font-bold uppercase">Search</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
 
-                        </tbody>
-                    </div>
-                </table>
+            <div class="w-full">
+                <div class="flex flex-wrap">
+                    @foreach ($zwemlessen as $zwemles)
+                        <div
+                            class="m-5 hover:scale-105 transition-all duration-300 ease-in-out max-w-[24rem] rounded-lg border border-blue-gray-50 bg-white p-4 font-sans text-sm font-normal text-blue-gray-500 shadow-lg shadow-blue-gray-500/10">
+                            <div class="flex items-center justify-between gap-4 mb-2">
+                                <a class="relative inline-block object-cover object-center rounded-full font-medium">
+                                    {{ $zwemles->naam }}
+                                </a>
+                                <a href="{{ route('zwemlessen.show', $zwemles) }}"
+                                    class="select-none rounded-lg bg-cyan-600 py-2 px-3 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none">
+                                    Bekijk
+                                </a>
+                            </div>
+                            <p class="block font-sans text-sm antialiased font-normal leading-normal text-gray-700">
+                                {{ $zwemles->beschrijving }}
+                            </p>
+                            <div class="flex items-center gap-8 pt-4 mt-6 border-t border-blue-gray-50">
+                                <p
+                                    class="flex items-center gap-1 font-sans text-xs antialiased font-normal text-gray-700">
+                                    <i class="fa-solid fa-clock"></i>
+                                    {{ $zwemles->duurtijd }}
+                                </p>
+                                <a
+                                    class="flex items-center gap-1 font-sans text-xs antialiased font-normal text-gray-700">
+                                    <i class="fa-solid fa-calendar-day"></i>
+                                    {{ $zwemles->tijdstip }}
+                                </a>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
             </div>
         </div>
     </div>
