@@ -81,9 +81,9 @@ class ZwemDocentController extends Controller
     //Feedback pagina
     public function feedbackCreate(int $leerling_id)
     {
-        $zwemDocenten = Zwem_Docent::all();
+        $zwemdocent = Zwem_Docent::where('user_id', Auth::id())->first();
         $leerlingen = Leerling::all();
-        return view('zwemdocenten.createFeedback', compact('zwemDocenten', 'leerlingen', 'leerling_id'));
+        return view('zwemdocenten.createFeedback', compact('zwemdocent', 'leerlingen', 'leerling_id'));
     }
 
     public function storeFeedback(StoreFeedbackRequest $request)
