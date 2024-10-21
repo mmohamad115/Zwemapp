@@ -76,7 +76,7 @@ class ZwemDocentController extends Controller
             $zwemles->groepen()->detach();
         }
 
-        return redirect()->route('zwemlessen.index')->with('success', 'Zwemles succesvol geupdate!');
+        return redirect()->route('zwemlessen.show', compact('zwemles'))->with('success', 'Zwemles succesvol geupdate!');
     }
     public function destroy(Zwemles $zwemles)
     {

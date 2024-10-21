@@ -65,8 +65,17 @@
                                                     </div>
                                                     <p class="text-sm font-medium leading-snug text-gray-600 my-3">
                                                         {{ $feedback->content }}
-
                                                     </p>
+                                                    <form action="{{ route('feedback.destroy', $leerling) }}"
+                                                        method="POST" style="display: inline-block;">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit"
+                                                            class="flex items-center gap-1 font-sans text-xs antialiased font-normal text-red-500">
+                                                            Verwijder
+                                                            <i class="fa-solid fa-angle-right"></i>
+                                                        </button>
+                                                    </form>
                                                 </div>
                                             </li>
                                         @endforeach

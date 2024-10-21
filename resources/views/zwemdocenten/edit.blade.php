@@ -84,8 +84,9 @@
                                         <div class="space-y-2">
                                             @foreach ($leerlingen as $leerling)
                                                 <div class="flex items-center">
-                                                    <input type="checkbox" name="leerlingen[]" value="{{ $leerling->leerling_id }}"
-                                                        {{ in_array($leerling->leerling_id, $zwemles->groepen->pluck('leerling_id')->toArray()) ? 'checked' : '' }} 
+                                                    <input type="checkbox" name="leerlingen[]"
+                                                        value="{{ $leerling->leerling_id }}"
+                                                        {{ in_array($leerling->leerling_id, $zwemles->groepen->pluck('leerling_id')->toArray()) ? 'checked' : '' }}
                                                         class="mr-2">
                                                     <label>{{ $leerling->voornaam }} {{ $leerling->achternaam }}</label>
                                                 </div>

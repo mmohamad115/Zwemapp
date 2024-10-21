@@ -18,7 +18,6 @@
     <div class="flex">
         @include('aside')
         <div class="h-screen w-full flex overflow-hidden select-none">
-
             <main
                 class="my-1 pt-2 pb-2 px-10 flex-1 rounded-l-lg 
                 transition duration-500 ease-in-out overflow-y-auto">
