@@ -123,13 +123,14 @@
                                 </p>
                                 <p class="text-gray-500"></p>
                                 <div class="flex py-4 space-x-4">
-                                    <form action="{{ route('leerlingen.destroy', $leerling) }}" method="POST"
-                                        style="display: inline-block;">
+                                    <form action="{{ route('feedback.destroy', [$leerling->leerling_id, $feedback->feedback_id]) }}"
+                                        method="POST" style="display: inline-block;">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit"
-                                            class="h-10 px-6 py-2 font-semibold rounded-xl bg-red-500 hover:bg-red-700 transiton-all duration-300 ease-in-out text-red-900"
-                                            onclick="return confirm('Weet je zeker dat je deze leerling wilt verwijderen?')">Verwijder</button>
+                                            class="h-10 px-6 py-2 font-semibold rounded-xl bg-red-500 hover:bg-red-700 transiton-all duration-300 ease-in-out text-red-900">
+                                            Verwijder
+                                        </button>
                                     </form>
                                 </div>
                             </div>
