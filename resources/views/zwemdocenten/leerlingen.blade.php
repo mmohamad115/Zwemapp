@@ -41,7 +41,7 @@
                 <div class="flex flex-wrap">
                     @foreach ($leerlingen as $leerling)
                         <div
-                            class="m-5 hover:scale-105 transition-all duration-300 ease-in-out max-w-[24rem] rounded-lg border border-blue-gray-50 bg-white p-4 font-sans text-sm font-normal text-blue-gray-500 shadow-lg shadow-blue-gray-500/10">
+                            class="m-5 hover:scale-105 transition-all duration-300 ease-in-out max-w-[24rem] w-96 rounded-lg border border-blue-gray-50 bg-white p-4 font-sans text-sm font-normal text-blue-gray-500 shadow-lg shadow-blue-gray-500/10">
                             <div class="flex items-center justify-between gap-4 mb-2">
                                 <i
                                     class="relative inline-block object-cover object-center fa-solid fa-circle-user fa-2x"></i>
@@ -67,11 +67,6 @@
                                     <i class="fa-solid fa-cake-candles"></i>
                                     {{ $leerling->geboortedatum }}
                                 </p>
-                                <a href="{{ route('feedback.edit', [$feedback, 'leerling_id' => $leerling->leerling_id]) }}"
-                                    class="flex items-center gap-1 font-sans text-xs antialiased font-normal text-gray-700">
-                                    Bewerk Feedback
-                                    <i class="fa-solid fa-angle-right"></i>
-                                </a>
                                 <a href="{{ route('feedback.create', ['leerling_id' => $leerling->leerling_id]) }}"
                                     class="flex items-center gap-1 font-sans text-xs antialiased font-normal text-gray-700">
                                     Maak Feedback

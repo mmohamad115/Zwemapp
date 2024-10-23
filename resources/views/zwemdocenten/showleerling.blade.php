@@ -66,16 +66,23 @@
                                                     <p class="text-sm font-medium leading-snug text-gray-600 my-3">
                                                         {{ $feedback->content }}
                                                     </p>
-                                                    <form action="{{ route('feedback.destroy', $leerling) }}"
-                                                        method="POST" style="display: inline-block;">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <button type="submit"
-                                                            class="flex items-center gap-1 font-sans text-xs antialiased font-normal text-red-500">
-                                                            Verwijder
+                                                    <div class="flex items-center gap-8 border-t border-blue-gray-50">
+                                                        <a href="{{ route('feedback.edit', [$feedback, 'leerling_id' => $leerling->leerling_id]) }}"
+                                                            class="flex items-center gap-1 font-sans text-xs antialiased font-normal text-gray-700">
+                                                            Bewerk Feedback
                                                             <i class="fa-solid fa-angle-right"></i>
-                                                        </button>
-                                                    </form>
+                                                        </a>
+                                                        <form action="{{ route('feedback.destroy', $leerling) }}"
+                                                            method="POST" style="display: inline-block;">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="submit"
+                                                                class="flex items-center gap-1 font-sans text-xs antialiased font-normal text-red-500">
+                                                                Verwijder
+                                                                <i class="fa-solid fa-angle-right"></i>
+                                                            </button>
+                                                        </form>
+                                                    </div>
                                                 </div>
                                             </li>
                                         @endforeach
@@ -123,7 +130,8 @@
                                 </p>
                                 <p class="text-gray-500"></p>
                                 <div class="flex py-4 space-x-4">
-                                    <form action="{{ route('feedback.destroy', [$leerling->leerling_id, $feedback->feedback_id]) }}"
+                                    <form
+                                        action="{{ route('feedback.destroy', [$leerling->leerling_id, $feedback->feedback_id]) }}"
                                         method="POST" style="display: inline-block;">
                                         @csrf
                                         @method('DELETE')
