@@ -18,7 +18,6 @@
     @include('headerLoggedIn')
     <div class="flex">
         @include('aside')
-
         <div class="w-full">
             <div class="flex">
                 <div class="py-6">
