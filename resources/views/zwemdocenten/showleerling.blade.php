@@ -136,7 +136,7 @@
                                         @method('DELETE')
                                         <button type="submit"
                                             class="h-10 px-6 py-2 font-semibold rounded-xl bg-red-500 hover:bg-red-700 transiton-all duration-300 ease-in-out text-red-900">
-                                            Verwijder
+                                            Leerling uitschrijven
                                         </button>
                                     </form>
                                 </div>

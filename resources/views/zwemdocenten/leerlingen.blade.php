@@ -52,16 +52,10 @@
                                 </a>
                             </div>
                             <h6
-                                class="flex items-center gap-2 mb-2 font-sans text-base antialiased font-medium leading-relaxed tracking-normal text-blue-gray-900">
+                                class="flex items-center gap-2 font-sans text-base antialiased font-medium leading-relaxed tracking-normal text-blue-gray-900">
                                 <span> {{ $leerling->voornaam }} {{ $leerling->achternaam }}</span>
                             </h6>
-                            @foreach ($leerling->feedback as $feedback)
-                                <p class="block font-sans text-sm antialiased font-normal leading-normal text-gray-700">
-                                    {{ Str::limit($feedback->content, 50, '...') }}
-                                    ({{ $feedback->aanmaakdatum }})
-                                </p>
-                            @endforeach
-                            <div class="flex items-center gap-8 pt-4 mt-6 border-t border-blue-gray-50">
+                            <div class="flex items-center gap-8 pt-4 mt-2 border-t border-blue-gray-50">
                                 <p
                                     class="flex items-center gap-1 font-sans text-xs antialiased font-normal text-gray-700">
                                     <i class="fa-solid fa-cake-candles"></i>
