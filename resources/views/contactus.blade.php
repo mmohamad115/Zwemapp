@@ -48,7 +48,8 @@
                             <p class="text-2xl font-extrabold text-dark-grey-900">Locatie</p>
                             <p class="text-base leading-7 text-dark-grey-600">Uw kan ons vinden</p>
                             <a class="text-lg font-bold text-purple-blue-500" target="_blank"
-                                href="https://goo.gl/maps/QcWzYETAh4FS3KTD7">10924 Urna Convallis</a>
+                                href="https://www.google.com/maps/place/Arbil,+Irak/@36.1989364,43.920078,12z/data=!3m1!4b1!4m6!3m5!1s0x400722fe13443461:0x3e01d63391de79d1!8m2!3d36.1877383!4d44.0106983!16zL20vMDNuN2Jy?entry=ttu&g_ep=EgoyMDI0MTAyMC4xIKXMDSoASAFQAw%3D%3D">10924
+                                Arbil</a>
                         </div>
                     </div>
                 </div>
