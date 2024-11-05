@@ -35,7 +35,7 @@
                     </div>
                 </li>
                 <li class="relative group">
-                    <a class="hover:text-cyan-400 hover:cursor-pointer">Tarieven</a>
+                    <a href="{{ route('tarieven') }}" class="hover:text-cyan-400 hover:cursor-pointer">Tarieven</a>
                     <div
                         class="absolute left-0 right-0 h-0.5 bg-cyan-400 scale-x-0 transition-transform duration-300 origin-center group-hover:scale-x-100">
                     </div>

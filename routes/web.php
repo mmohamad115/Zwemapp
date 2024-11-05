@@ -19,6 +19,10 @@ Route::get('/contact', function () {
     return view('contactus');
 })->name('contact');;
 
+Route::get('/tarieven', function () {
+    return view('tarieven');
+})->name('tarieven');;
+
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
 // })->middleware(['auth', 'verified'])->name('dashboard');
