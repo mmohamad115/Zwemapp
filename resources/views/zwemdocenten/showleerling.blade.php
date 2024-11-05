@@ -71,7 +71,7 @@
                                                             Bewerk Feedback
                                                             <i class="fa-solid fa-angle-right"></i>
                                                         </a>
-                                                        <form action="{{ route('feedback.destroy', $leerling) }}"
+                                                        <form action="{{ route('feedback.destroy', $feedback->feedback_id) }}"
                                                             method="POST" style="display: inline-block;">
                                                             @csrf
                                                             @method('DELETE')
@@ -130,7 +130,7 @@
                                 <p class="text-gray-500"></p>
                                 <div class="flex py-4 space-x-4">
                                     <form
-                                        action="{{ route('feedback.destroy', [$leerling->leerling_id, $feedback->feedback_id]) }}"
+                                        action="{{ route('leerlingen.destroy', $leerling) }}"
                                         method="POST" style="display: inline-block;">
                                         @csrf
                                         @method('DELETE')

@@ -117,10 +117,12 @@ class ZwemDocentController extends Controller
         return redirect()->route('leerlingen.index')->with('success', 'Feedback succesvol geupdate!');
     }
 
-    public function destroyFeedback(Feedback $feedback, Leerling $leerling)
+    public function destroyFeedback(Feedback $feedback)
     {
+        $leerling = Leerling::find($feedback->leerling_id);
         $feedback->delete();
-        return view('zwemdocenten.showleerling', compact('feedback', 'leerling'))->with('success', 'Feedback succesvol verwijderd!');
+        // return view('zwemdocenten.showleerling', compact('feedback', 'leerling'))->with('success', 'Feedback succesvol verwijderd!');
+        return redirect()->route('leerlingen.show', compact( 'leerling' ))->with('success', 'Feedback is verwijderd');
     }
 
     //Leerlingen pagina
