@@ -16,6 +16,7 @@ return new class extends Migration
 
             // $table->unsignedBigInteger('zwem_docent_id');
             $table->unsignedBigInteger('zwemles_id');
+            $table->boolean('is_betaald')->nullable();
             $table->timestamps();
 
             $table->foreign('leerling_id')->references('leerling_id')->on('leerlingen')->onDelete('cascade');
