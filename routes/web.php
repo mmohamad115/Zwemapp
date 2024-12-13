@@ -6,6 +6,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ZwemDocentController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Models\Eindexamen;
 
 Route::get('/', function () {
     return view('index');
@@ -52,14 +53,18 @@ Route::get('/leerlingen', [ZwemDocentController::class, 'leerlingen'])->name('le
 // Route::get('/zwemdocenten/leerlingen', [ZwemDocentController::class, 'leerlingen'])->name('zwemdocenten.leerlingen');
 Route::get('/leerlingen/{leerling}', [ZwemDocentController::class, 'showLeerling'])->name('leerlingen.show');
 Route::delete('/leerlingen/{leerling}', [ZwemDocentController::class, 'destroyLeerling'])->name('leerlingen.destroy');
+Route::put('/leerlingen/{leerling}', [ZwemDocentController::class, 'updateLeerling'])->name('leerlingen.update');
+
 
 Route::post('/feedback', [ZwemDocentController::class, 'storeFeedback'])->name('feedback.store');
 Route::get('/feedback/create/{leerling_id}', [ZwemDocentController::class, 'feedbackCreate'])->name('feedback.create');
 Route::put('/feedback/{feedback}', [ZwemDocentController::class, 'updateFeedback'])->name('feedback.update');
 Route::delete('/feedback/{feedback}', [ZwemDocentController::class, 'destroyFeedback'])->name('feedback.destroy');
-
 Route::get('/feedback/{feedback}/{leerling_id}/edit', [ZwemDocentController::class, 'editFeedback'])->name('feedback.edit');
 
-Route::put('/leerlingen/{leerling}', [ZwemDocentController::class, 'updateLeerling'])->name('leerlingen.update');
+
+Route::get('/eindexamen', [ZwemDocentController::class, 'examen'])->name('eindexamen.index');
+Route::get('/eindexamen/{eindexamen}', [ZwemDocentController::class, 'showexamen'])->name('eindexamen.show');
+
 
 require __DIR__ . '/auth.php';
