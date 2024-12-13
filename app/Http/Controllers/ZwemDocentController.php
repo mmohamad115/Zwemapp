@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreFeedbackRequest;
 use App\Http\Requests\StoreZwemDocentRequest;
+use App\Models\Eindexamen;
 use App\Models\Zwem_Docent;
 use App\Models\Zwemles;
 use Illuminate\Http\Request;
@@ -122,7 +123,7 @@ class ZwemDocentController extends Controller
         $leerling = Leerling::find($feedback->leerling_id);
         $feedback->delete();
         // return view('zwemdocenten.showleerling', compact('feedback', 'leerling'))->with('success', 'Feedback succesvol verwijderd!');
-        return redirect()->route('leerlingen.show', compact( 'leerling' ))->with('success', 'Feedback is verwijderd');
+        return redirect()->route('leerlingen.show', compact('leerling'))->with('success', 'Feedback is verwijderd');
     }
 
     //Leerlingen pagina
@@ -164,5 +165,25 @@ class ZwemDocentController extends Controller
         ]);
 
         return redirect()->route('leerlingen.index')->with('success', 'Voortgang bijgewerkt.');
+    }
+
+    //eindexamen pagina
+    public function examen(Request $request)
+    {
+        $eindexamen = Eindexamen::all();
+
+        $search = $request->input('search');
+
+        $eindexamen = Eindexamen::when($search, function ($query, $search) {
+            return $query->where('examen_naam', 'LIKE', "%{$search}%")
+                ->orWhere('beschrijving', 'LIKE', "%{$search}%");
+        })->get();
+
+        return view('zwemdocenten.examen', compact('eindexamen'));
+    }
+
+    public function showExamen(Eindexamen $eindexamen)
+    {
+        return view('zwemdocenten.showexamen', compact('eindexamen'));
     }
 }
