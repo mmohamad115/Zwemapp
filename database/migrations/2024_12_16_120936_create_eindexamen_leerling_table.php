@@ -15,10 +15,24 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('eindexamen_id');
             $table->unsignedBigInteger('leerling_id');
+            $table->enum('status', ['aangemeld', 'geslaagd', 'gezakt'])->default('aangemeld');
+            $table->unsignedBigInteger('prijs_id')->nullable();
             $table->timestamps();
 
-            $table->foreign('eindexamen_id')->references('eindexamen_id')->on('eindexamen')->onDelete('cascade');
-            $table->foreign('leerling_id')->references('leerling_id')->on('leerlingen')->onDelete('cascade');
+            $table->foreign('eindexamen_id')
+                  ->references('eindexamen_id')
+                  ->on('eindexamen')
+                  ->onDelete('cascade');
+
+            $table->foreign('leerling_id')
+                  ->references('leerling_id')
+                  ->on('leerlingen')
+                  ->onDelete('cascade');
+
+            $table->foreign('prijs_id')
+                  ->references('prijs_id')
+                  ->on('prijzen')
+                  ->onDelete('set null');
         });
     }
 

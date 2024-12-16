@@ -44,8 +44,6 @@
                         <p class="text-gray-500 text-sm pb-2">duur: {{ $eindexamen->duur }} minuten
                         </p>
                         <p class="text-gray-500"> {{ $eindexamen->beschrijving }}</p>
-<<<<<<< HEAD
-=======
 
                         @if (session('error'))
                             <div class="bg-red-500 text-white p-4 rounded">
@@ -62,17 +60,65 @@
                         <h3 class="mt-6 text-lg font-semibold">Gekoppelde Leerlingen:</h3>
                         <ul>
                             @foreach ($eindexamen->leerlingen as $leerling)
-                                <li class="flex justify-between items-center">
-                                    {{ $leerling->voornaam }} {{ $leerling->achternaam }}
-                                    <form
-                                        action="{{ route('eindexamen.verwijderLeerling', [$eindexamen, $leerling]) }}"
-                                        method="POST" style="display: inline-block;"
-                                        onsubmit="return confirm('Weet je zeker dat je deze leerling wilt verwijderen van het eindexamen?');">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit"
-                                            class="text-red-500 hover:text-red-700">Verwijder</button>
-                                    </form>
+                                <li class="flex justify-between items-center p-2 border-b">
+                                    <div>
+                                        {{ $leerling->voornaam }} {{ $leerling->achternaam }}
+                                        <span class="ml-2 px-2 py-1 rounded text-sm
+                                            @if($leerling->pivot->status === 'geslaagd') bg-green-100 text-green-800
+                                            @elseif($leerling->pivot->status === 'gezakt') bg-red-100 text-red-800
+                                            @else bg-yellow-100 text-yellow-800
+                                            @endif">
+                                            {{ ucfirst($leerling->pivot->status) }}
+                                        </span>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        @if($leerling->pivot->status !== 'geslaagd')
+                                            <form action="{{ route('eindexamen.updateStatus', [$eindexamen, $leerling]) }}" method="POST" class="inline">
+                                                @csrf
+                                                @method('PUT')
+                                                <select name="status" class="text-sm rounded border-gray-300" onchange="this.form.submit()">
+                                                    <option value="aangemeld" {{ $leerling->pivot->status === 'aangemeld' ? 'selected' : '' }}>Aangemeld</option>
+                                                    <option value="geslaagd" {{ $leerling->pivot->status === 'geslaagd' ? 'selected' : '' }}>Geslaagd</option>
+                                                    <option value="gezakt" {{ $leerling->pivot->status === 'gezakt' ? 'selected' : '' }}>Gezakt</option>
+                                                </select>
+                                            </form>
+                                        @endif
+
+                                        @if($leerling->pivot->status === 'geslaagd' && !$leerling->pivot->prijs_id)
+                                            <form action="{{ route('eindexamen.toekennenPrijs', [$eindexamen, $leerling]) }}" method="POST" class="inline">
+                                                @csrf
+                                                <select name="prijs_id" class="text-sm rounded border-gray-300" required>
+                                                    <option value="">Selecteer diploma</option>
+                                                    @foreach($prijzen as $prijs)
+                                                        <option value="{{ $prijs->prijs_id }}">{{ $prijs->naam }}</option>
+                                                    @endforeach
+                                                </select>
+                                                <button type="submit" class="bg-green-500 text-white px-2 py-1 rounded text-sm">
+                                                    Ken toe
+                                                </button>
+                                            </form>
+                                        @elseif($leerling->pivot->prijs_id)
+                                            <form action="{{ route('eindexamen.toekennenPrijs', [$eindexamen, $leerling]) }}" method="POST" class="inline">
+                                                @csrf
+                                                <select name="prijs_id" class="text-sm rounded border-gray-300" required onchange="this.form.submit()">
+                                                    @foreach($prijzen as $prijs)
+                                                        <option value="{{ $prijs->prijs_id }}" 
+                                                            {{ $leerling->pivot->prijs_id == $prijs->prijs_id ? 'selected' : '' }}>
+                                                            {{ $prijs->naam }}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
+                                            </form>
+                                        @endif
+
+                                        <form action="{{ route('eindexamen.verwijderLeerling', [$eindexamen, $leerling]) }}" method="POST" class="inline">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="text-red-500 hover:text-red-700">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </form>
+                                    </div>
                                 </li>
                             @endforeach
                         </ul>
@@ -90,7 +136,6 @@
                             <button type="submit" class="mt-2 bg-cyan-600 text-white px-4 py-2 rounded">Voeg Leerling
                                 toe</button>
                         </form>
->>>>>>> 9d8b6eb05c2a9adc810cbb70386ab156ea1a1164
                     </div>
 
                 </div>

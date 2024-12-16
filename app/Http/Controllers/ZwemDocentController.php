@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use App\Models\Feedback;
 use App\Models\Leerling;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Prijs;
 
 
 class ZwemDocentController extends Controller
@@ -186,7 +187,8 @@ class ZwemDocentController extends Controller
     public function showExamen(Eindexamen $eindexamen)
     {
         $leerlingen = Leerling::all();
-        return view('zwemdocenten.showexamen', compact('eindexamen', 'leerlingen'));
+        $prijzen = Prijs::all();
+        return view('zwemdocenten.showexamen', compact('eindexamen', 'leerlingen', 'prijzen'));
     }
 
     public function LeerlingMetExamen(Request $request, Eindexamen $eindexamen)
@@ -209,5 +211,31 @@ class ZwemDocentController extends Controller
         $eindexamen->leerlingen()->detach($leerling->leerling_id);
 
         return redirect()->route('eindexamen.show', $eindexamen)->with('success', 'Leerling succesvol verwijderd van het eindexamen!');
+    }
+
+    public function updateExamenStatus(Request $request, Eindexamen $eindexamen, Leerling $leerling)
+    {
+        $request->validate([
+            'status' => 'required|in:aangemeld,geslaagd,gezakt'
+        ]);
+
+        $eindexamen->leerlingen()->updateExistingPivot($leerling->leerling_id, [
+            'status' => $request->status
+        ]);
+
+        return redirect()->back()->with('success', 'Status succesvol bijgewerkt!');
+    }
+
+    public function toekennenPrijs(Request $request, Eindexamen $eindexamen, Leerling $leerling)
+    {
+        $request->validate([
+            'prijs_id' => 'required|exists:prijzen,prijs_id'
+        ]);
+
+        $eindexamen->leerlingen()->updateExistingPivot($leerling->leerling_id, [
+            'prijs_id' => $request->prijs_id
+        ]);
+
+        return redirect()->back()->with('success', 'Diploma succesvol toegekend!');
     }
 }
