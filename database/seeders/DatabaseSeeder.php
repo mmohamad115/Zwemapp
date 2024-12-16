@@ -64,5 +64,6 @@ class DatabaseSeeder extends Seeder
         $this->call(LeerlingenSeeder::class);
         $this->call(FeedbackSeeder::class);
         $this->call(EindexamenSeeder::class);
+        $this->call(PrijzenSeeder::class);
     }
 }

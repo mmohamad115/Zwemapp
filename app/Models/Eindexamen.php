@@ -23,6 +23,13 @@ class Eindexamen extends Model
 
     public function leerlingen()
     {
-        return $this->belongsToMany(Leerling::class, 'eindexamen_leerling', 'eindexamen_id', 'leerling_id');
+        return $this->belongsToMany(Leerling::class, 'eindexamen_leerling', 'eindexamen_id', 'leerling_id')
+                    ->withPivot('status', 'prijs_id')
+                    ->withTimestamps();
+    }
+
+    public function prijzen()
+    {
+        return $this->belongsToMany(Prijs::class, 'eindexamen_leerling', 'eindexamen_id', 'prijs_id');
     }
 }

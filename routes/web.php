@@ -61,7 +61,8 @@ Route::get('/eindexamen', [ZwemDocentController::class, 'examen'])->name('eindex
 Route::get('/eindexamen/{eindexamen}', [ZwemDocentController::class, 'showexamen'])->name('eindexamen.show');
 Route::post('/eindexamen/{eindexamen}/koppel-leerling', [ZwemDocentController::class, 'LeerlingMetExamen'])->name('eindexamen.koppelLeerling');
 Route::delete('/eindexamen/{eindexamen}/verwijder-leerling/{leerling}', [ZwemDocentController::class, 'VerwijderLeerlingExamen'])->name('eindexamen.verwijderLeerling');
-
+Route::put('/eindexamen/{eindexamen}/leerling/{leerling}/status', [ZwemDocentController::class, 'updateExamenStatus'])->name('eindexamen.updateStatus');
+Route::post('/eindexamen/{eindexamen}/leerling/{leerling}/prijs', [ZwemDocentController::class, 'toekennenPrijs'])->name('eindexamen.toekennenPrijs');
 
 
 require __DIR__ . '/auth.php';
