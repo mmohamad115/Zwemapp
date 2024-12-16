@@ -63,4 +63,5 @@ Route::post('/eindexamen/{eindexamen}/koppel-leerling', [ZwemDocentController::c
 Route::delete('/eindexamen/{eindexamen}/verwijder-leerling/{leerling}', [ZwemDocentController::class, 'VerwijderLeerlingExamen'])->name('eindexamen.verwijderLeerling');
 
 
+
 require __DIR__ . '/auth.php';
