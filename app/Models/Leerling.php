@@ -38,4 +38,9 @@ class Leerling extends Model
     {
         return $this->belongsToMany(Zwemles::class, 'inschrijvingen', 'leerling_id', 'zwemles_id');
     }
+
+    public function eindexamens()
+    {
+        return $this->belongsToMany(Eindexamen::class, 'eindexamen_leerling', 'leerling_id', 'eindexamen_id');
+    }
 }

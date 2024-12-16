@@ -65,6 +65,8 @@ Route::get('/feedback/{feedback}/{leerling_id}/edit', [ZwemDocentController::cla
 
 Route::get('/eindexamen', [ZwemDocentController::class, 'examen'])->name('eindexamen.index');
 Route::get('/eindexamen/{eindexamen}', [ZwemDocentController::class, 'showexamen'])->name('eindexamen.show');
+Route::post('/eindexamen/{eindexamen}/koppel-leerling', [ZwemDocentController::class, 'LeerlingMetExamen'])->name('eindexamen.koppelLeerling');
+Route::delete('/eindexamen/{eindexamen}/verwijder-leerling/{leerling}', [ZwemDocentController::class, 'VerwijderLeerlingExamen'])->name('eindexamen.verwijderLeerling');
 
 
 require __DIR__ . '/auth.php';

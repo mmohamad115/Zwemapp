@@ -124,10 +124,15 @@
                                     class="mb-2 leading-tight tracking-tight font-bold text-gray-800 text-2xl md:text-3xl">
                                     {{ $leerling->voornaam }} {{ $leerling->achternaam }}
                                 </h2>
-                                <p class="text-gray-500 text-sm pb-1">{{ $leerling->geboortedatum }}
-                                <p class="text-gray-500 text-sm pb-2">Zwemdiploma {{ $leerling->diploma }}
-                                </p>
-                                <p class="text-gray-500"></p>
+                                <p class="text-gray-500 text-sm pb-1">{{ $leerling->geboortedatum }}</p>
+                                <p class="text-gray-500 text-sm pb-2">Zwemdiploma {{ $leerling->diploma }}</p>
+
+                                <h3 class="mt-6 text-lg font-semibold">Gekoppelde Eindexamens:</h3>
+                                <ul>
+                                    @foreach ($eindexamens as $eindexamen)
+                                        <li>{{ $eindexamen->examen_naam }} - {{ $eindexamen->tijdstip }}</li>
+                                    @endforeach
+                                </ul>
                                 <div class="flex py-4 space-x-4">
                                     <form
                                         action="{{ route('leerlingen.destroy', $leerling) }}"
