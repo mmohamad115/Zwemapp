@@ -44,6 +44,53 @@
                         <p class="text-gray-500 text-sm pb-2">duur: {{ $eindexamen->duur }} minuten
                         </p>
                         <p class="text-gray-500"> {{ $eindexamen->beschrijving }}</p>
+<<<<<<< HEAD
+=======
+
+                        @if (session('error'))
+                            <div class="bg-red-500 text-white p-4 rounded">
+                                {{ session('error') }}
+                            </div>
+                        @endif
+
+                        @if (session('success'))
+                            <div class="bg-green-500 text-white p-4 rounded">
+                                {{ session('success') }}
+                            </div>
+                        @endif
+
+                        <h3 class="mt-6 text-lg font-semibold">Gekoppelde Leerlingen:</h3>
+                        <ul>
+                            @foreach ($eindexamen->leerlingen as $leerling)
+                                <li class="flex justify-between items-center">
+                                    {{ $leerling->voornaam }} {{ $leerling->achternaam }}
+                                    <form
+                                        action="{{ route('eindexamen.verwijderLeerling', [$eindexamen, $leerling]) }}"
+                                        method="POST" style="display: inline-block;"
+                                        onsubmit="return confirm('Weet je zeker dat je deze leerling wilt verwijderen van het eindexamen?');">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit"
+                                            class="text-red-500 hover:text-red-700">Verwijder</button>
+                                    </form>
+                                </li>
+                            @endforeach
+                        </ul>
+
+                        <h3 class="mt-6 text-lg font-semibold">Voeg Leerling toe:</h3>
+                        <form method="POST" action="{{ route('eindexamen.koppelLeerling', $eindexamen) }}">
+                            @csrf
+                            <select name="leerling_id" required>
+                                <option value="">Selecteer een leerling</option>
+                                @foreach ($leerlingen as $leerling)
+                                    <option value="{{ $leerling->leerling_id }}">{{ $leerling->voornaam }}
+                                        {{ $leerling->achternaam }}</option>
+                                @endforeach
+                            </select>
+                            <button type="submit" class="mt-2 bg-cyan-600 text-white px-4 py-2 rounded">Voeg Leerling
+                                toe</button>
+                        </form>
+>>>>>>> 9d8b6eb05c2a9adc810cbb70386ab156ea1a1164
                     </div>
 
                 </div>

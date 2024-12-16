@@ -22,11 +22,29 @@
     @endguest
     <div class="flex">
         @auth
-            @include('aside')
+            @if (auth()->user()->role === 'zwem_docent')
+                @include('aside')
+            @elseif(auth()->user()->role === 'ouder')
+                <aside class="bg-cyan-400 text-white w-64 min-h-screen p-4 overflow-y-auto relative">
+                    <nav>
+                        <ul class="space-y-2">
+                            <li class="opcion-con-desplegable">
+                                <div
+                                    class="flex items-center justify-between p-2 hover:bg-cyan-300 cursor-pointer rounded-lg">
+                                    <div class="flex items-center">
+                                        <i class="fas fa-calendar-alt mr-2"></i>
+                                        <a href="{{ route('ouders.index') }}">Dashboard</a>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </nav>
+                </aside>
+            @endif
         @endauth
+
         <main class="mt-5 ml-16 py-4">
             <div class="flex flex-col space-y-8">
-                <!-- First Row -->
                 <div class="grid grid-cols-5 px-2 xl:p-0 gap-y-4 md:gap-6">
                     <div class="md:col-span-2 xl:col-span-3 bg-white p-6 rounded-2xl border border-gray-50">
                         <div class="flex flex-col space-y-6 md:h-full md:justify-between">

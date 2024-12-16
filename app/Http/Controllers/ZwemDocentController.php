@@ -145,8 +145,9 @@ class ZwemDocentController extends Controller
     public function showLeerling(Leerling $leerling)
     {
         $totalLessons = ZwemLes::count();
+        $eindexamens = $leerling->eindexamens;
 
-        return view('zwemdocenten.showleerling', compact('leerling', 'totalLessons'));
+        return view('zwemdocenten.showleerling', compact('leerling', 'totalLessons', 'eindexamens'));
     }
     public function destroyLeerling(Leerling $leerling)
     {
@@ -184,6 +185,29 @@ class ZwemDocentController extends Controller
 
     public function showExamen(Eindexamen $eindexamen)
     {
-        return view('zwemdocenten.showexamen', compact('eindexamen'));
+        $leerlingen = Leerling::all();
+        return view('zwemdocenten.showexamen', compact('eindexamen', 'leerlingen'));
+    }
+
+    public function LeerlingMetExamen(Request $request, Eindexamen $eindexamen)
+    {
+        $request->validate([
+            'leerling_id' => 'required|exists:leerlingen,leerling_id',
+        ]);
+
+        if ($eindexamen->leerlingen()->where('eindexamen_leerling.leerling_id', $request->input('leerling_id'))->exists()) {
+            return redirect()->route('eindexamen.show', $eindexamen)->with('error', 'Deze leerling is al gekoppeld aan dit eindexamen.');
+        }
+
+        $eindexamen->leerlingen()->attach($request->input('leerling_id'));
+
+        return redirect()->route('eindexamen.show', $eindexamen)->with('success', 'Leerling succesvol gekoppeld aan het eindexamen!');
+    }
+
+    public function VerwijderLeerlingExamen(Eindexamen $eindexamen, Leerling $leerling)
+    {
+        $eindexamen->leerlingen()->detach($leerling->leerling_id);
+
+        return redirect()->route('eindexamen.show', $eindexamen)->with('success', 'Leerling succesvol verwijderd van het eindexamen!');
     }
 }
