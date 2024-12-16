@@ -20,4 +20,9 @@ class Eindexamen extends Model
     ];
 
     protected $primaryKey = 'eindexamen_id';
+
+    public function leerlingen()
+    {
+        return $this->belongsToMany(Leerling::class, 'eindexamen_leerling', 'eindexamen_id', 'leerling_id');
+    }
 }
