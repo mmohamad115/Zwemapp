@@ -67,4 +67,5 @@ Route::get('/eindexamen', [ZwemDocentController::class, 'examen'])->name('eindex
 Route::get('/eindexamen/{eindexamen}', [ZwemDocentController::class, 'showexamen'])->name('eindexamen.show');
 
 
+
 require __DIR__ . '/auth.php';

@@ -44,20 +44,6 @@
                         <p class="text-gray-500 text-sm pb-2">duur: {{ $eindexamen->duur }} minuten
                         </p>
                         <p class="text-gray-500"> {{ $eindexamen->beschrijving }}</p>
-                        {{-- <div class="flex py-4 space-x-4">
-                            <a href="{{ route('zwemlessen.edit', $eindexamen) }}"
-                                class="h-10 px-6 py-2 font-semibold rounded-xl bg-cyan-400 hover:bg-cyan-600 transiton-all duration-300 ease-in-out text-white">
-                                Bewerk
-                            </a>
-                            <form action="{{ route('zwemlessen.destroy', $eindexamen) }}" method="POST"
-                                style="display: inline-block;">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit"
-                                    class="h-10 px-6 py-2 font-semibold rounded-xl bg-red-500 hover:bg-red-700 transiton-all duration-300 ease-in-out text-red-900"
-                                    onclick="return confirm('Weet je zeker dat je deze zwemles wilt verwijderen?')">Verwijder</button>
-                            </form>
-                        </div> --}}
                     </div>
 
                 </div>
