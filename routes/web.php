@@ -24,9 +24,6 @@ Route::get('/tarieven', function () {
     return view('tarieven');
 })->name('tarieven');;
 
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -46,11 +43,8 @@ Route::get('/zwemlessen/{zwemles}/edit', [ZwemDocentController::class, 'edit'])-
 Route::put('/zwemlessen/{zwemles}', [ZwemDocentController::class, 'update'])->name('zwemlessen.update');
 Route::delete('/zwemlessen/{zwemles}', [ZwemDocentController::class, 'destroy'])->name('zwemlessen.destroy');
 
-// Route::get('/index', function () {
-//     return view('index');
-// });
+
 Route::get('/leerlingen', [ZwemDocentController::class, 'leerlingen'])->name('leerlingen.index');
-// Route::get('/zwemdocenten/leerlingen', [ZwemDocentController::class, 'leerlingen'])->name('zwemdocenten.leerlingen');
 Route::get('/leerlingen/{leerling}', [ZwemDocentController::class, 'showLeerling'])->name('leerlingen.show');
 Route::delete('/leerlingen/{leerling}', [ZwemDocentController::class, 'destroyLeerling'])->name('leerlingen.destroy');
 Route::put('/leerlingen/{leerling}', [ZwemDocentController::class, 'updateLeerling'])->name('leerlingen.update');

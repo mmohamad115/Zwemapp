@@ -58,12 +58,12 @@
                                 <p
                                     class="flex items-center gap-1 font-sans text-xs antialiased font-normal text-gray-700">
                                     <i class="fa-solid fa-clock"></i>
-                                    {{ $zwemles->duurtijd }}
+                                    {{ $zwemles->tijd }}
                                 </p>
                                 <a
                                     class="flex items-center gap-1 font-sans text-xs antialiased font-normal text-gray-700">
                                     <i class="fa-solid fa-calendar-day"></i>
-                                    {{ $zwemles->tijdstip }}
+                                    {{ $zwemles->datum }}
                                 </a>
                             </div>
                         </div>

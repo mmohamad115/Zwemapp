@@ -16,7 +16,8 @@ return new class extends Migration
             $table->string('naam');
             $table->string('beschrijving');
             $table->string('duurtijd');
-            $table->dateTime('tijdstip');
+            $table->date('datum');
+            $table->string('tijd');
             $table->timestamps();
         });
     }

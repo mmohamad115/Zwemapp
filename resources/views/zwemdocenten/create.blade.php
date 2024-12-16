@@ -33,9 +33,20 @@
                                     vul alle velden in.</p>
                             </div>
                         </div>
-                        <form action="{{ route('zwemlessen.store') }}" method="POST">
+                        <form action="{{ route('zwemlessen.store') }}" method="POST" onsubmit="combineDateTime()">
                             @csrf
                             <div class="divide-y divide-gray-200">
+                                @if ($errors->any())
+                                    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                                        <strong class="font-bold">Oeps!</strong>
+                                        <span class="block sm:inline">Er zijn enkele problemen met je invoer.</span>
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endif
                                 <div class="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
                                     <div class="flex flex-col">
                                         <label for="naam" class="leading-loose">Naam</label>
@@ -57,23 +68,19 @@
                                     </div>
                                     <div class="flex items-center space-x-4">
                                         <div class="flex flex-col">
-                                            <label for="tijdstip" class="leading-loose">Tijdstip</label>
-                                            <div class="relative focus-within:text-gray-600 text-gray-400">
-                                                <input type="time" name="tijdstip" required
-                                                    class="pr-4 pl-10 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600"
-                                                    placeholder="25/02/2020">
-                                                <div class="absolute left-3 top-2">
-                                                    <svg class="w-6 h-6" fill="none" stroke="currentColor"
-                                                        viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                                            stroke-width="2"
-                                                            d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z">
-                                                        </path>
-                                                    </svg>
-                                                </div>
-                                            </div>
+                                            <label for="datum" class="leading-loose">Datum</label>
+                                            <input type="date" id="datum" name="datum" required
+                                                class="pr-4 pl-10 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600"
+                                                placeholder="Datum">
+                                        </div>
+                                        <div class="flex flex-col">
+                                            <label for="tijd" class="leading-loose">Tijd</label>
+                                            <input type="time" id="tijd" name="tijd" required
+                                                class="pr-4 pl-10 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600"
+                                                placeholder="Tijd">
                                         </div>
                                     </div>
+                                    <input type="hidden" id="tijd" name="tijd">
                                     <div class="flex flex-col">
                                         <label for="leerlingen" class="leading-loose">Leerlingen</label>
                                         <div class="space-y-2">
@@ -99,6 +106,17 @@
             </div>
         </div>
     </div>
+
+    <script>
+        function combineDateTime() {
+            const datum = document.getElementById('datum').value;
+            const tijd = document.getElementById('tijd').value;
+            const tijdstipInput = document.getElementById('tijdstip');
+            if (datum && tijd) {
+                tijdstipInput.value = `${datum} ${tijd}`;
+            }
+        }
+    </script>
 </body>
 
 </html>

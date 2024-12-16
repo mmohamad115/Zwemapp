@@ -17,7 +17,8 @@ class Zwemles extends Model
         'naam',
         'beschrijving',
         'duurtijd',
-        'tijdstip',
+        'datum',
+        'tijd',
     ];
 
     public function groepen()

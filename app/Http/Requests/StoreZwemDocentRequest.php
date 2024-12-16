@@ -25,7 +25,8 @@ class StoreZwemDocentRequest extends FormRequest
             'naam' => 'required|string|max:255',
             'beschrijving' => 'required|string',
             'duurtijd' => 'required|integer',
-            'tijdstip' => 'required|date_format:H:i',
+            'datum' => 'required|date',
+            'tijd' => 'required|date_format:H:i',
         ];
     }
 }

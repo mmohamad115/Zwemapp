@@ -47,12 +47,20 @@ class ZwemDocentController extends Controller
 
     public function store(StoreZwemDocentRequest $request)
     {
-        $zwemles = Zwemles::create($request->validated());
-
+        $validated = $request->validated();
+    
+        $zwemles = Zwemles::create([
+            'naam' => $validated['naam'],
+            'beschrijving' => $validated['beschrijving'],
+            'duurtijd' => $validated['duurtijd'],
+            'datum' => $validated['datum'],
+            'tijd' => $validated['tijd'],
+        ]);
+    
         if ($request->has('leerlingen')) {
             $zwemles->groepen()->attach($request->input('leerlingen'));
         }
-
+    
         return redirect()->route('zwemlessen.index')->with('success', 'Zwemles succesvol aangemaakt!');
     }
 

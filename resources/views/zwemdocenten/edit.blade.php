@@ -60,22 +60,23 @@
                                     </div>
                                     <div class="flex items-center space-x-4">
                                         <div class="flex flex-col">
-                                            <label for="tijdstip" class="leading-loose">Tijdstip</label>
-                                            <div class="relative focus-within:text-gray-600 text-gray-400">
-                                                <input type="time" name="tijdstip"
-                                                    value="{{ old('tijdstip', \Carbon\Carbon::parse($zwemles->tijdstip)->format('H:i')) }}"
-                                                    required
-                                                    class="pr-4 pl-10 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600"
-                                                    placeholder="25/02/2020">
-                                                <div class="absolute left-3 top-2">
-                                                    <svg class="w-6 h-6" fill="none" stroke="currentColor"
-                                                        viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                                            stroke-width="2"
-                                                            d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z">
-                                                        </path>
-                                                    </svg>
-                                                </div>
+                                            <label for="datum" class="leading-loose">Datum</label>
+                                            <div class="relative">
+                                                <i class="fa-solid fa-calendar-day absolute left-3 top-3 text-gray-400"></i>
+                                                <input type="date" id="datum" name="datum"
+                                                    value="{{ old('datum', \Carbon\Carbon::parse($zwemles->tijdstip)->format('Y-m-d')) }}" required
+                                                    class="pl-10 pr-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600"
+                                                    placeholder="Datum">
+                                            </div>
+                                        </div>
+                                        <div class="flex flex-col">
+                                            <label for="tijd" class="leading-loose">Tijd</label>
+                                            <div class="relative">
+                                                <i class="fa-solid fa-clock absolute left-3 top-3 text-gray-400"></i>
+                                                <input type="time" id="tijd" name="tijd"
+                                                    value="{{ old('tijd', \Carbon\Carbon::parse($zwemles->tijdstip)->format('H:i')) }}" required
+                                                    class="pl-10 pr-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600"
+                                                    placeholder="Tijd">
                                             </div>
                                         </div>
                                     </div>
