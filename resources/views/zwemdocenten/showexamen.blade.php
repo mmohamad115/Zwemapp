@@ -44,8 +44,6 @@
                         <p class="text-gray-500 text-sm pb-2">duur: {{ $eindexamen->duur }} minuten
                         </p>
                         <p class="text-gray-500"> {{ $eindexamen->beschrijving }}</p>
-<<<<<<< HEAD
-=======
 
                         @if (session('error'))
                             <div class="bg-red-500 text-white p-4 rounded">
@@ -90,7 +88,6 @@
                             <button type="submit" class="mt-2 bg-cyan-600 text-white px-4 py-2 rounded">Voeg Leerling
                                 toe</button>
                         </form>
->>>>>>> 9d8b6eb05c2a9adc810cbb70386ab156ea1a1164
                     </div>
 
                 </div>
