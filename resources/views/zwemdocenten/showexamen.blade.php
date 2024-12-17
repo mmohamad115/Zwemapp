@@ -33,7 +33,7 @@
                             <span>
                                 <i class="fa-solid fa-angle-right"></i>
                             </span>
-                            <span>{{ $eindexamen->examen_naam }} {{ $eindexamen->beschrijving }}</span>
+                            <span>{{ $eindexamen->examen_naam }} </span>
                         </div>
                     </div>
                     <div class="md:flex-1 px-40 pl-8">
@@ -63,46 +63,63 @@
                                 <li class="flex justify-between items-center p-2 border-b">
                                     <div>
                                         {{ $leerling->voornaam }} {{ $leerling->achternaam }}
-                                        <span class="ml-2 px-2 py-1 rounded text-sm
-                                            @if($leerling->pivot->status === 'geslaagd') bg-green-100 text-green-800
+                                        <span
+                                            class="ml-2 px-2 py-1 rounded text-sm
+                                            @if ($leerling->pivot->status === 'geslaagd') bg-green-100 text-green-800
                                             @elseif($leerling->pivot->status === 'gezakt') bg-red-100 text-red-800
-                                            @else bg-yellow-100 text-yellow-800
-                                            @endif">
+                                            @else bg-yellow-100 text-yellow-800 @endif">
                                             {{ ucfirst($leerling->pivot->status) }}
                                         </span>
                                     </div>
                                     <div class="flex items-center gap-2">
-                                        @if($leerling->pivot->status !== 'geslaagd')
-                                            <form action="{{ route('eindexamen.updateStatus', [$eindexamen, $leerling]) }}" method="POST" class="inline">
+                                        @if ($leerling->pivot->status !== 'geslaagd')
+                                            <form
+                                                action="{{ route('eindexamen.updateStatus', [$eindexamen, $leerling]) }}"
+                                                method="POST" class="inline">
                                                 @csrf
                                                 @method('PUT')
-                                                <select name="status" class="text-sm rounded border-gray-300" onchange="this.form.submit()">
-                                                    <option value="aangemeld" {{ $leerling->pivot->status === 'aangemeld' ? 'selected' : '' }}>Aangemeld</option>
-                                                    <option value="geslaagd" {{ $leerling->pivot->status === 'geslaagd' ? 'selected' : '' }}>Geslaagd</option>
-                                                    <option value="gezakt" {{ $leerling->pivot->status === 'gezakt' ? 'selected' : '' }}>Gezakt</option>
+                                                <select name="status" class="text-sm rounded border-gray-300"
+                                                    onchange="this.form.submit()">
+                                                    <option value="aangemeld"
+                                                        {{ $leerling->pivot->status === 'aangemeld' ? 'selected' : '' }}>
+                                                        Aangemeld</option>
+                                                    <option value="geslaagd"
+                                                        {{ $leerling->pivot->status === 'geslaagd' ? 'selected' : '' }}>
+                                                        Geslaagd</option>
+                                                    <option value="gezakt"
+                                                        {{ $leerling->pivot->status === 'gezakt' ? 'selected' : '' }}>
+                                                        Gezakt</option>
                                                 </select>
                                             </form>
                                         @endif
 
-                                        @if($leerling->pivot->status === 'geslaagd' && !$leerling->pivot->prijs_id)
-                                            <form action="{{ route('eindexamen.toekennenPrijs', [$eindexamen, $leerling]) }}" method="POST" class="inline">
+                                        @if ($leerling->pivot->status === 'geslaagd' && !$leerling->pivot->prijs_id)
+                                            <form
+                                                action="{{ route('eindexamen.toekennenPrijs', [$eindexamen, $leerling]) }}"
+                                                method="POST" class="inline">
                                                 @csrf
-                                                <select name="prijs_id" class="text-sm rounded border-gray-300" required>
+                                                <select name="prijs_id" class="text-sm rounded border-gray-300"
+                                                    required>
                                                     <option value="">Selecteer diploma</option>
-                                                    @foreach($prijzen as $prijs)
-                                                        <option value="{{ $prijs->prijs_id }}">{{ $prijs->naam }}</option>
+                                                    @foreach ($prijzen as $prijs)
+                                                        <option value="{{ $prijs->prijs_id }}">{{ $prijs->naam }}
+                                                        </option>
                                                     @endforeach
                                                 </select>
-                                                <button type="submit" class="bg-green-500 text-white px-2 py-1 rounded text-sm">
+                                                <button type="submit"
+                                                    class="bg-green-500 text-white px-2 py-1 rounded text-sm">
                                                     Ken toe
                                                 </button>
                                             </form>
                                         @elseif($leerling->pivot->prijs_id)
-                                            <form action="{{ route('eindexamen.toekennenPrijs', [$eindexamen, $leerling]) }}" method="POST" class="inline">
+                                            <form
+                                                action="{{ route('eindexamen.toekennenPrijs', [$eindexamen, $leerling]) }}"
+                                                method="POST" class="inline">
                                                 @csrf
-                                                <select name="prijs_id" class="text-sm rounded border-gray-300" required onchange="this.form.submit()">
-                                                    @foreach($prijzen as $prijs)
-                                                        <option value="{{ $prijs->prijs_id }}" 
+                                                <select name="prijs_id" class="text-sm rounded border-gray-300" required
+                                                    onchange="this.form.submit()">
+                                                    @foreach ($prijzen as $prijs)
+                                                        <option value="{{ $prijs->prijs_id }}"
                                                             {{ $leerling->pivot->prijs_id == $prijs->prijs_id ? 'selected' : '' }}>
                                                             {{ $prijs->naam }}
                                                         </option>
@@ -111,7 +128,9 @@
                                             </form>
                                         @endif
 
-                                        <form action="{{ route('eindexamen.verwijderLeerling', [$eindexamen, $leerling]) }}" method="POST" class="inline">
+                                        <form
+                                            action="{{ route('eindexamen.verwijderLeerling', [$eindexamen, $leerling]) }}"
+                                            method="POST" class="inline">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="text-red-500 hover:text-red-700">
