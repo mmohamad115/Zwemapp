@@ -145,14 +145,15 @@
                         <h3 class="mt-6 text-lg font-semibold">Voeg Leerling toe:</h3>
                         <form method="POST" action="{{ route('eindexamen.koppelLeerling', $eindexamen) }}">
                             @csrf
-                            <select name="leerling_id" required>
+                            <select class="rounded-lg border-cyan-600" name="leerling_id" required>
                                 <option value="">Selecteer een leerling</option>
                                 @foreach ($leerlingen as $leerling)
                                     <option value="{{ $leerling->leerling_id }}">{{ $leerling->voornaam }}
                                         {{ $leerling->achternaam }}</option>
                                 @endforeach
                             </select>
-                            <button type="submit" class="mt-2 bg-cyan-600 text-white px-4 py-2 rounded">Voeg Leerling
+                            <button type="submit" class="mt-2 bg-cyan-600 text-white px-4 py-2 rounded-lg">Voeg
+                                Leerling
                                 toe</button>
                         </form>
                     </div>
